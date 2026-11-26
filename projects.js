@@ -138,11 +138,15 @@ window.PRODUCTS = [
   { img: "assets/work/5hour-spiderverse.webp", label: "Across the Spider-Verse campaign", project: "5-hour Energy", wide: true }
 ];
 
-window.PARTNERS = [
-  "hasbro","sony-pictures","hoyoverse","xbox-game-studios","universal","prime-video","warner-bros",
-  "rog","tumi","lenovo","pizza-hut","tictac","onitsuka-tiger","mentos",
-  "realme","traveloka","oreo","baskin-robbins","mms","aoc","alpenliebe",
-  "lynx","bridgestone","lux","chupa-chups","msi","hyperx","haagen-dazs",
-  "dunkin","klook","lexus","acer","chevron","5-hour-energy","anker",
-  "honor","heinemann","oppo","caltex","gillette","hershey","zotac"
+/*
+  PARTNER_GROUPS — the partner logo section, one row per group, in this order.
+  Logo files live in assets/logos/<name>.png
+*/
+window.PARTNER_GROUPS = [
+  { name: "Film & Entertainment", logos: ["sony-pictures", "universal", "warner-bros", "prime-video", "hasbro"] },
+  { name: "Gaming", logos: ["xbox-game-studios", "hoyoverse", "rog", "hyperx", "msi", "zotac", "aoc"] },
+  { name: "Consumer Tech", logos: ["lenovo", "acer", "honor", "oppo", "realme", "anker"] },
+  { name: "Lifestyle & Travel", logos: ["tumi", "onitsuka-tiger", "traveloka", "klook"] },
+  { name: "Automotive & Energy", logos: ["lexus", "bridgestone", "chevron", "caltex"] },
+  { name: "FMCG: Food, Beverage & Personal Care", logos: ["heinemann", "tictac", "mentos", "oreo", "mms", "hershey", "alpenliebe", "chupa-chups", "haagen-dazs", "baskin-robbins", "dunkin", "pizza-hut", "5-hour-energy", "lynx", "lux", "gillette"] }
 ];

@@ -7,8 +7,8 @@
   <meta name="description" content="Brand Infinity connects brands with the world's leading storytellers across film, licensing, gaming and streaming. An IP partnership agency for Asia Pacific, based in Singapore.">
   <meta property="og:title" content="Brand Infinity">
   <meta property="og:description" content="Brand partnerships with global entertainment IP across film, gaming, streaming and licensing in Asia Pacific.">
-  <meta property="og:image" content="assets/work/heinemann-monopoly.webp">
-  <meta name="theme-color" content="#efece6">
+  <meta property="og:image" content="assets/video/roborock-garfield.webp">
+  <meta name="theme-color" content="#111111">
   <link rel="icon" href="assets/mark.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,187 +17,239 @@
 </head>
 <body>
 
-<header class="hdr" id="hdr">
+<header class="hdr on-dark" id="hdr">
   <a class="logo" href="#top" aria-label="Brand Infinity, back to top">
     <img src="assets/mark.png" alt="" width="26" height="25"><span>Brand Infinity</span>
   </a>
   <nav class="hdr-nav" id="nav" aria-label="Main">
-    <a href="#work">Work<sup id="workCount"></sup></a>
+    <a href="#work">Work</a>
+    <a href="#products">Products</a>
+    <a href="#partners">Partners</a>
     <a href="#services">Services</a>
-    <a href="#about">About</a>
     <a href="#contact">Contact</a>
   </nav>
-  <p class="hdr-time mono" aria-label="Local time in Singapore">SG <span id="clock">--:--</span></p>
   <a class="hdr-cta" href="#contact">Start a project</a>
   <button class="hdr-menu mono" id="menuBtn" aria-expanded="false" aria-controls="nav">Menu</button>
 </header>
 
 <main id="top">
 
-  <!-- INTRO -->
-  <section class="intro">
-    <h1 class="intro-title">
-      We connect your brand to the leading storytellers across
-      <span class="inl"><img src="assets/work/tumi-bullet-train.webp" alt=""></span> film,
-      <span class="inl"><img src="assets/work/heinemann-monopoly.webp" alt=""></span> licensing,
-      <span class="inl"><img src="assets/work/tictac-mlbb-2.webp" alt=""></span> gaming
-      and <span class="inl"><img src="assets/work/realme-spiderman.webp" alt=""></span> streaming.
-    </h1>
-    <div class="intro-meta">
-      <p class="mono"><span class="k">Agency</span>IP partnerships &amp; licensing</p>
-      <p class="mono"><span class="k">Based</span>Singapore, working across Asia Pacific</p>
-      <p class="mono"><span class="k">Since</span>15 years, 40+ brand partners</p>
-      <a class="arrow-link" href="#contact">Start a project <span aria-hidden="true">↘</span></a>
+  <!-- HERO: full-screen montage of campaign films -->
+  <section class="hero" id="hero">
+    <div class="hero-bg" id="heroBg" aria-hidden="true">
+      <video class="hero-media is-on" data-key="film" src="assets/video/roborock-garfield.mp4" poster="assets/video/roborock-garfield.webp" muted playsinline preload="auto" autoplay></video>
+      <video class="hero-media" data-key="licensing" src="assets/video/heinemann-monopoly.mp4" poster="assets/video/heinemann-monopoly.webp" muted playsinline preload="none"></video>
+      <img class="hero-media" data-key="gaming" src="assets/work/zotac-spiderverse.webp" alt="">
+      <video class="hero-media" data-key="streaming" src="assets/video/realme-superhero.mp4" poster="assets/video/realme-superhero.webp" muted playsinline preload="none"></video>
+    </div>
+    <div class="hero-shade" aria-hidden="true"></div>
+
+    <div class="hero-inner">
+      <h1 class="hero-title">
+        We connect your brand to the leading storytellers across
+        <a href="#work" class="kw is-on" data-key="film">Film</a>,
+        <a href="#work" class="kw" data-key="licensing">Licensing</a>,
+        <a href="#work" class="kw" data-key="gaming">Gaming</a>
+        and <a href="#work" class="kw" data-key="streaming">Streaming</a>.
+      </h1>
+      <div class="hero-foot">
+        <p class="mono hero-now"><span class="dot"></span>Now playing <span id="heroNow">Roborock × The Garfield Movie</span></p>
+        <div class="hero-ctas">
+          <a class="btn btn-light" href="#contact">Start a project</a>
+          <a class="btn btn-ghost-light" href="#work">See our work</a>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- WORK -->
-  <section class="work" id="work">
-    <h2 class="h-big">Our Work</h2>
+  <!-- INTRO STRIP -->
+  <section class="strip">
+    <div class="wrap strip-grid">
+      <p class="strip-lead">Your gateway agency for Asia Pacific, connecting brands to global entertainment IP at a local, regional and global level.</p>
+      <dl class="facts">
+        <div><dt class="mono">Experience</dt><dd>15+ years</dd></div>
+        <div><dt class="mono">Partners</dt><dd>40+ brands</dd></div>
+        <div><dt class="mono">Based</dt><dd>Singapore</dd></div>
+      </dl>
+    </div>
+  </section>
 
-    <!-- Carousel: swipe/scroll works without JS; JS adds arrows, counter and autoplay -->
-    <div class="carousel" id="carousel" aria-roledescription="carousel" aria-label="Brand Infinity work">
+  <!-- 01 WORK -->
+  <section class="sec" id="work">
+    <div class="wrap">
+      <header class="sec-head">
+        <span class="mono sec-no">01</span>
+        <h2 class="sec-title">Our Work</h2>
+        <div class="sec-aside car-nav">
+          <span class="mono" id="carCount">01 / 01</span>
+          <button class="circle" id="carPrev" aria-label="Previous project">←</button>
+          <button class="circle" id="carNext" aria-label="Next project">→</button>
+        </div>
+      </header>
+    </div>
+
+    <div class="carousel" id="carousel" aria-roledescription="carousel" aria-label="Featured work">
       <div class="car-track" id="carTrack" tabindex="0"></div>
-      <div class="car-ui mono">
-        <span id="carCount">01 / 01</span>
-        <div class="car-progress" aria-hidden="true"><span id="carBar"></span></div>
-        <div class="car-btns"><button id="carPrev" aria-label="Previous slide">← Prev</button><button id="carNext" aria-label="Next slide">Next →</button></div>
-      </div>
+    </div>
+    <div class="wrap car-foot">
+      <div class="car-dots" id="carDots" role="tablist" aria-label="Choose a project"></div>
+      <p class="mono muted car-hint">Swipe or use the arrows</p>
     </div>
 
-    <div class="bar bar-all">
-      <p class="h-sec">All projects</p>
-      <div class="bar-tools">
-        <div class="filters mono" id="filters" role="group" aria-label="Filter by discipline"></div>
-        <div class="views mono" role="group" aria-label="Layout">
-          <button class="is-on" data-view="grid" aria-pressed="true">Grid</button>
-          <button data-view="index" aria-pressed="false">Index</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="grid" id="grid"></div>
-
-    <div class="index" id="index" hidden>
-      <div class="index-head mono" aria-hidden="true"><span>No.</span><span>Brand</span><span>Property</span><span>Discipline</span><span>Scope</span></div>
-      <ol id="indexList"></ol>
-      <div class="hover-img" id="hoverImg" aria-hidden="true"><img alt=""></div>
-    </div>
-  </section>
-
-  <!-- PRODUCTS -->
-  <section class="products" aria-labelledby="productsTitle">
-    <div class="bar">
-      <h2 class="h-sec" id="productsTitle">Products &amp; activations</h2>
-      <p class="mono muted">Limited editions, merchandise and in-game integrations</p>
-    </div>
-    <ul class="prod" id="prod"></ul>
-  </section>
-
-  <!-- CLIENTS -->
-  <section class="clients" aria-labelledby="clientsTitle">
-    <h2 class="h-big h-big-sm" id="clientsTitle">Some of our partners we are proud to have collaborated with</h2>
-    <div class="bar">
-      <p class="h-sec">Brands &amp; IPs</p>
-      <p class="mono muted" id="partnerCount"></p>
-    </div>
-    <ul class="logo-grid" id="logoGrid"></ul>
-  </section>
-
-  <!-- SERVICES -->
-  <section class="services" id="services">
-    <div class="bar">
-      <h2 class="h-sec">Services</h2>
-      <p class="mono muted">From first idea to launch day</p>
-    </div>
-    <ol class="svc" id="svc">
-      <li>
-        <button class="svc-row" aria-expanded="true"><span class="mono n">01</span><span class="t">Access to global IP</span><span class="pm" aria-hidden="true"></span></button>
-        <div class="svc-body">
-          <p>We connect you to key stakeholders in global entertainment IPs across film, gaming and streaming, with direct access through trusted relationships and regional expertise. We are your gateway agency for Asia Pacific, at a local, regional and global level: the first step in your IP partnership journey.</p>
-          <ul class="mono scope"><li>Alliances with IP rights holders</li><li>Premiere sponsorship &amp; events</li><li>Collaboration &amp; partnership planning</li></ul>
-        </div>
-      </li>
-      <li>
-        <button class="svc-row" aria-expanded="false"><span class="mono n">02</span><span class="t">Brand consultation</span><span class="pm" aria-hidden="true"></span></button>
-        <div class="svc-body" hidden>
-          <p>We evaluate your brand and objectives to shape the right entertainment strategy and advise on the best genre fits. We map partnership models and deal terms to the timings that fit your calendar goals and budget.</p>
-          <ul class="mono scope"><li>Strategic planning in entertainment</li><li>Genre &amp; IP fit</li><li>Calendar &amp; budget planning</li></ul>
-        </div>
-      </li>
-      <li>
-        <button class="svc-row" aria-expanded="false"><span class="mono n">03</span><span class="t">Licensing &amp; negotiation</span><span class="pm" aria-hidden="true"></span></button>
-        <div class="svc-body" hidden>
-          <p>We negotiate across all product categories, so the deal structure fits your business and marketing needs.</p>
-          <dl class="models">
-            <div><dt>Licensed</dt><dd>Fee-based, no media support.</dd></div>
-            <div><dt>License-free</dt><dd>Media and marketing support, no fees.</dd></div>
-            <div><dt>Hybrid</dt><dd>A mix of the two, built around your goals.</dd></div>
-          </dl>
-          <ul class="mono scope"><li>Licensing IP</li><li>Character licensing &amp; product creation</li><li>Contract negotiation with rights holders</li></ul>
-        </div>
-      </li>
-      <li>
-        <button class="svc-row" aria-expanded="false"><span class="mono n">04</span><span class="t">Campaigns &amp; activation</span><span class="pm" aria-hidden="true"></span></button>
-        <div class="svc-body" hidden>
-          <p>We develop a framework across every brand and consumer touchpoint and support end-to-end campaign delivery.</p>
-          <ul class="mono scope"><li>Promotional programs</li><li>Sales mechanic activations</li><li>Social &amp; digital</li><li>PR &amp; launch events</li><li>E-commerce &amp; in-trade</li><li>Product integration</li><li>Premiums &amp; merchandise</li><li>In-film &amp; in-game integration</li></ul>
-        </div>
-      </li>
-    </ol>
-  </section>
-
-  <!-- ABOUT -->
-  <section class="about" id="about">
-    <div class="bar"><h2 class="h-sec">About</h2></div>
-    <div class="about-cols">
-      <p class="about-lead">We specialise in pop culture. With deep experience across entertainment, brand marketing and agency leadership, our team forges partnerships across film, gaming, streaming and licensing.</p>
-      <div class="about-body">
-        <p>Over the past 15 years, we've built regional and global collaborations that connect the world's leading IPs with brands across Asia Pacific, delivering measurable value and ROI for all parties.</p>
-        <p>Culturally diverse and based across Southeast Asia, our team bridges global storytelling with local insight, so every partnership resonates with real audiences and drives talkability.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section class="contact" id="contact">
-    <div class="bar"><h2 class="h-sec">Contact</h2><p class="mono muted">Looking to get your brand noticed?</p></div>
-    <a class="big-mail" href="mailto:connect@brandinfinity.sg">connect@<wbr>brandinfinity.sg</a>
-    <div class="contact-cols">
-      <div class="mono contact-info">
-        <p><span class="k">Studio</span>Brand Infinity Pte Ltd<br>68 Circular Road #02-01<br>Singapore 049422</p>
-        <p><span class="k">New business</span><a href="mailto:connect@brandinfinity.sg">connect@brandinfinity.sg</a></p>
-      </div>
-      <form class="form" id="form" novalidate>
-        <p class="form-lead">Tell us about your brand and we'll come back with ideas.</p>
-        <label><span class="mono">Name</span><input name="name" required autocomplete="name"></label>
-        <label><span class="mono">Company</span><input name="company" autocomplete="organization"></label>
-        <label><span class="mono">Email</span><input name="email" type="email" required autocomplete="email"></label>
-        <fieldset>
-          <legend class="mono">Interested in</legend>
-          <div class="checks">
-            <label><input type="checkbox" name="interest" value="Film"><span>Film</span></label>
-            <label><input type="checkbox" name="interest" value="Gaming"><span>Gaming</span></label>
-            <label><input type="checkbox" name="interest" value="Streaming"><span>Streaming</span></label>
-            <label><input type="checkbox" name="interest" value="Licensing"><span>Licensing</span></label>
+    <div class="wrap">
+      <div class="sub-head" id="all">
+        <h3 class="sub-title">All projects <sup id="workCount"></sup></h3>
+        <div class="tools">
+          <div class="filters mono" id="filters" role="group" aria-label="Filter by discipline"></div>
+          <div class="views mono" role="group" aria-label="Layout">
+            <button class="is-on" data-view="grid" aria-pressed="true">Grid</button>
+            <button data-view="index" aria-pressed="false">List</button>
           </div>
-        </fieldset>
-        <label><span class="mono">Brief</span><textarea name="message" rows="3" required></textarea></label>
-        <div class="form-foot">
-          <button type="submit" class="send">Send enquiry <span aria-hidden="true">→</span></button>
-          <p class="mono muted" id="formNote">Opens your email app with the message ready.</p>
         </div>
-      </form>
+      </div>
+
+      <div class="grid" id="grid"></div>
+
+      <div class="index" id="index" hidden>
+        <div class="index-head mono" aria-hidden="true"><span>No.</span><span>Brand</span><span>Property</span><span>Discipline</span><span>Scope</span></div>
+        <ol id="indexList"></ol>
+        <div class="hover-img" id="hoverImg" aria-hidden="true"><img alt=""></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 PRODUCTS -->
+  <section class="sec" id="products">
+    <div class="wrap">
+      <header class="sec-head">
+        <span class="mono sec-no">02</span>
+        <h2 class="sec-title">Products &amp; Activations</h2>
+        <p class="sec-aside mono muted">Limited editions, merchandise &amp; in-game integrations</p>
+      </header>
+      <ul class="tiles" id="prod"></ul>
+    </div>
+  </section>
+
+  <!-- 03 PARTNERS -->
+  <section class="sec" id="partners">
+    <div class="wrap">
+      <header class="sec-head">
+        <span class="mono sec-no">03</span>
+        <h2 class="sec-title">Some of our partners we are proud to have collaborated with</h2>
+        <p class="sec-aside mono muted" id="partnerCount"></p>
+      </header>
+      <div class="partners" id="partnerGroups"></div>
+    </div>
+  </section>
+
+  <!-- 04 SERVICES -->
+  <section class="sec" id="services">
+    <div class="wrap">
+      <header class="sec-head">
+        <span class="mono sec-no">04</span>
+        <h2 class="sec-title">Services</h2>
+        <p class="sec-aside mono muted">From first idea to launch day</p>
+      </header>
+      <ol class="svc" id="svc">
+        <li>
+          <button class="svc-row" aria-expanded="true"><span class="mono n">4.1</span><span class="t">Access to global IP</span><span class="pm" aria-hidden="true"></span></button>
+          <div class="svc-body">
+            <p>We connect you to key stakeholders in global entertainment IPs across film, gaming and streaming, with direct access through trusted relationships and regional expertise. We are your gateway agency for Asia Pacific, at a local, regional and global level: the first step in your IP partnership journey.</p>
+            <ul class="mono scope"><li>Alliances with IP rights holders</li><li>Premiere sponsorship &amp; events</li><li>Collaboration &amp; partnership planning</li></ul>
+          </div>
+        </li>
+        <li>
+          <button class="svc-row" aria-expanded="false"><span class="mono n">4.2</span><span class="t">Brand consultation</span><span class="pm" aria-hidden="true"></span></button>
+          <div class="svc-body" hidden>
+            <p>We evaluate your brand and objectives to shape the right entertainment strategy and advise on the best genre fits. We map partnership models and deal terms to the timings that fit your calendar goals and budget.</p>
+            <ul class="mono scope"><li>Strategic planning in entertainment</li><li>Genre &amp; IP fit</li><li>Calendar &amp; budget planning</li></ul>
+          </div>
+        </li>
+        <li>
+          <button class="svc-row" aria-expanded="false"><span class="mono n">4.3</span><span class="t">Licensing &amp; negotiation</span><span class="pm" aria-hidden="true"></span></button>
+          <div class="svc-body" hidden>
+            <p>We negotiate across all product categories, so the deal structure fits your business and marketing needs.</p>
+            <dl class="models">
+              <div><dt>Licensed</dt><dd>Fee-based, no media support.</dd></div>
+              <div><dt>License-free</dt><dd>Media and marketing support, no fees.</dd></div>
+              <div><dt>Hybrid</dt><dd>A mix of the two, built around your goals.</dd></div>
+            </dl>
+            <ul class="mono scope"><li>Licensing IP</li><li>Character licensing &amp; product creation</li><li>Contract negotiation with rights holders</li></ul>
+          </div>
+        </li>
+        <li>
+          <button class="svc-row" aria-expanded="false"><span class="mono n">4.4</span><span class="t">Campaigns &amp; activation</span><span class="pm" aria-hidden="true"></span></button>
+          <div class="svc-body" hidden>
+            <p>We develop a framework across every brand and consumer touchpoint and support end-to-end campaign delivery.</p>
+            <ul class="mono scope"><li>Promotional programs</li><li>Sales mechanic activations</li><li>Social &amp; digital</li><li>PR &amp; launch events</li><li>E-commerce &amp; in-trade</li><li>Product integration</li><li>Premiums &amp; merchandise</li><li>In-film &amp; in-game integration</li></ul>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- 05 ABOUT -->
+  <section class="sec" id="about">
+    <div class="wrap">
+      <header class="sec-head">
+        <span class="mono sec-no">05</span>
+        <h2 class="sec-title">Why work with us</h2>
+      </header>
+      <div class="about-cols">
+        <p class="about-lead">We specialise in pop culture. With deep experience across entertainment, brand marketing and agency leadership, our team forges partnerships across film, gaming, streaming and licensing.</p>
+        <div class="about-body">
+          <p>Over the past 15 years, we've built regional and global collaborations that connect the world's leading IPs with brands across Asia Pacific, delivering measurable value and ROI for all parties.</p>
+          <p>Culturally diverse and based across Southeast Asia, our team bridges global storytelling with local insight, so every partnership resonates with real audiences and drives talkability.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 CONTACT -->
+  <section class="sec contact" id="contact">
+    <div class="wrap">
+      <header class="sec-head">
+        <span class="mono sec-no">06</span>
+        <h2 class="sec-title">Looking to get your brand noticed?</h2>
+      </header>
+      <div class="contact-cols">
+        <div class="contact-info">
+          <p class="contact-lead">Connect with the team to discuss how we can integrate your brand story within entertainment.</p>
+          <a class="big-mail" href="mailto:connect@brandinfinity.sg">connect@brandinfinity.sg</a>
+          <p class="mono"><span class="k">Studio</span>Brand Infinity Pte Ltd<br>68 Circular Road #02-01<br>Singapore 049422</p>
+        </div>
+        <form class="form" id="form" novalidate>
+          <label><span class="mono">Name</span><input name="name" required autocomplete="name"></label>
+          <label><span class="mono">Company</span><input name="company" autocomplete="organization"></label>
+          <label><span class="mono">Email</span><input name="email" type="email" required autocomplete="email"></label>
+          <fieldset>
+            <legend class="mono">Interested in</legend>
+            <div class="checks">
+              <label><input type="checkbox" name="interest" value="Film"><span>Film</span></label>
+              <label><input type="checkbox" name="interest" value="Gaming"><span>Gaming</span></label>
+              <label><input type="checkbox" name="interest" value="Streaming"><span>Streaming</span></label>
+              <label><input type="checkbox" name="interest" value="Licensing"><span>Licensing</span></label>
+            </div>
+          </fieldset>
+          <label><span class="mono">Brief</span><textarea name="message" rows="3" required></textarea></label>
+          <div class="form-foot">
+            <button type="submit" class="btn">Send enquiry →</button>
+            <p class="mono muted" id="formNote">Opens your email app with the message ready.</p>
+          </div>
+        </form>
+      </div>
     </div>
   </section>
 </main>
 
 <footer class="ftr">
-  <p class="ftr-word" aria-hidden="true">Brand Infinity</p>
-  <div class="ftr-row mono">
-    <span>© <span id="year">2025</span> Brand Infinity Pte Ltd</span>
-    <span>Elevate your brand</span>
-    <a href="#top">Back to top ↑</a>
+  <div class="wrap">
+    <p class="ftr-word" aria-hidden="true">Brand Infinity</p>
+    <div class="ftr-row mono">
+      <span>© <span id="year">2025</span> Brand Infinity Pte Ltd</span>
+      <span>Elevate your brand</span>
+      <a href="#top">Back to top ↑</a>
+    </div>
   </div>
 </footer>
 
@@ -210,8 +262,6 @@
   </div>
   <div class="case-inner" id="caseInner"></div>
 </div>
-
-<div class="cursor mono" id="cursor" aria-hidden="true">View</div>
 
 <script src="projects.js"></script>
 <script src="main.js"></script>

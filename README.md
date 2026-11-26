@@ -31,7 +31,11 @@ All work is in **`projects.js`**. Copy an entry, change the fields, and drop ima
 
 The grid layout alternates large and small images automatically, so order in the list is the order on the page.
 
-The partner logo grid is the `PARTNERS` list at the bottom of the same file (file names in `assets/logos/`).
+Mark a project `highlight: true` to show it in the Our Work carousel.
+
+The **Products & activations** tiles are the `PRODUCTS` list, and the partner logos are `PARTNER_GROUPS` (one row per sector, logo files in `assets/logos/`), both in the same file.
+
+The opening montage is the four `hero-media` items near the top of `index.html`, one per highlighted word (Film, Licensing, Gaming, Streaming). Swap a file there to change what plays.
 
 ## Contact form
 
