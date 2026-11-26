@@ -11,6 +11,14 @@
 */
 window.PROJECTS = [
   {
+    brand: "Roborock", ip: "The Garfield Movie",
+    category: "film",
+    summary: "A campaign film and product placement putting Roborock's robot vacuum into the world of The Garfield Movie, cleaning up after Garfield and Odie.",
+    tags: ["Film partnership", "Product placement", "Campaign film"],
+    images: ["assets/work/roborock-garfield-3.webp", "assets/video/roborock-garfield.webp", "assets/work/roborock-garfield-2.webp", "assets/work/roborock-garfield-endcard.webp"],
+    video: "assets/video/roborock-garfield.mp4"
+  },
+  {
     brand: "Heinemann", ip: "Monopoly",
     category: "licensing",
     summary: "Sweet Dreams by Heinemann reimagined around the Monopoly board, with a travel-themed edition and campaign film.",

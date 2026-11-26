@@ -212,8 +212,8 @@ body.lock { overflow: hidden; }
 .cursor.on { transform: translate(-50%, -50%) scale(1); }
 
 /* Reveal */
-.rv { opacity: 0; transform: translateY(30px); transition: opacity .9s, transform .9s cubic-bezier(.2,.7,.2,1); }
-.rv.in { opacity: 1; transform: none; }
+.rv { transform: translateY(24px); transition: transform .9s cubic-bezier(.2,.7,.2,1); }
+.rv.in { transform: none; }
 
 /* Responsive */
 @media (max-width: 1000px) {
