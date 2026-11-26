@@ -111,8 +111,19 @@
       requestAnimationFrame(loop);
     };
     loop();
-    document.addEventListener("mouseover", (e) => cursor.classList.toggle("on", !!e.target.closest(".item, .row")));
+    document.addEventListener("mouseover", (e) => cursor.classList.toggle("on", !!e.target.closest(".item, .row, .prod-item")));
   }
+
+  /* Products & activations gallery: each tile opens its project */
+  $("#prod").innerHTML = (window.PRODUCTS || []).map((d) => {
+    const i = P.findIndex((p) => p.brand === d.project);
+    const href = i > -1 ? `#project/${slug(P[i])}` : "#work";
+    return `<li class="${d.wide ? "wide" : ""}${d.fill ? " fill" : ""}"><a href="${href}" class="prod-item">
+      <span class="prod-media"><img src="${esc(d.img)}" alt="${esc(d.label)}" loading="lazy"></span>
+      <span class="cap"><span class="mono n">${esc(d.project)}</span><span>${esc(d.label)}</span></span>
+    </a></li>`;
+  }).join("");
+  $("#partnerCount").textContent = `${(window.PARTNERS || []).length} partners`;
 
   /* Logos */
   $("#logoGrid").innerHTML = (window.PARTNERS || []).map((n) => `<li><img src="assets/logos/${n}.png" alt="${esc(n.replace(/-/g, " "))}" loading="lazy"></li>`).join("");

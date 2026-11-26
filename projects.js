@@ -115,6 +115,19 @@ window.PROJECTS = [
   }
 ];
 
+/*
+  PRODUCTS — the "Products & activations" gallery.
+  project: the brand name of the project it opens (must match a PROJECTS brand)
+*/
+window.PRODUCTS = [
+  { img: "assets/work/5hour-venom.webp", label: "Venom special-edition shot", project: "5-hour Energy" },
+  { img: "assets/work/bridgestone-suits.webp", label: "Bridgestone in-game racing suits", project: "Bridgestone", fill: true },
+  { img: "assets/work/anker-transformers.webp", label: "Nebula × Transformers projector", project: "Anker", fill: true },
+  { img: "assets/work/dunkin-spiderman.webp", label: "Spider-Man donut boxes", project: "Dunkin'" },
+  { img: "assets/work/bridgestone-controller.webp", label: "Bridgestone custom controller", project: "Bridgestone", fill: true },
+  { img: "assets/work/5hour-spiderverse.webp", label: "Across the Spider-Verse campaign", project: "5-hour Energy", wide: true }
+];
+
 window.PARTNERS = [
   "universal","sony-pictures","warner-bros","prime-video","hasbro","xbox-game-studios","hoyoverse",
   "anker","tumi","onitsuka-tiger","heinemann","tictac","bridgestone","5-hour-energy","lexus","honor",
