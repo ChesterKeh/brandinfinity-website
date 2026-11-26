@@ -161,18 +161,20 @@
 
   /* ---------- 03 Partners, grouped ---------- */
   const G = window.PARTNER_GROUPS || [];
-  $("#partnerCount").textContent = `${G.reduce((n, g) => n + g.logos.length, 0)} partners · ${G.length} sectors`;
   // Balance logo sizes: wide logos get shorter, tall logos taller, so each carries similar visual weight
   const sizeLogo = (img) => {
     if (!img.naturalWidth) return;
-    const r = img.naturalWidth / img.naturalHeight, area = innerWidth < 760 ? 1500 : 2300;
-    img.style.height = Math.round(Math.min(56, Math.max(20, Math.sqrt(area / r)))) + "px";
+    const small = innerWidth < 760, hero = !!img.closest(".trusted");
+    const area = hero ? (small ? 700 : 1500) : (small ? 1500 : 2300), max = hero ? (small ? 30 : 42) : 56;
+    const r = img.naturalWidth / img.naturalHeight;
+    img.style.height = Math.round(Math.min(max, Math.max(14, Math.sqrt(area / r)))) + "px";
   };
-  document.addEventListener("load", (e) => { if (e.target.closest && e.target.closest(".plogos")) sizeLogo(e.target); }, true);
-  addEventListener("load", () => $$(".plogos img").forEach(sizeLogo));
+  document.addEventListener("load", (e) => { if (e.target.closest && e.target.closest(".plogos, .trusted")) sizeLogo(e.target); }, true);
+  const sizeAll = () => $$(".plogos img, .trusted img").forEach(sizeLogo);
+  addEventListener("load", sizeAll); sizeAll();
   $("#partnerGroups").innerHTML = G.map((g) => `
     <div class="pgroup">
-      <h3>${esc(g.name)}<span class="mono">${g.logos.length} partners</span></h3>
+      <h3>${esc(g.name)}</h3>
       <ul class="plogos">${g.logos.map((n) => `<li><img src="assets/logos/${n}.png" alt="${esc(n.replace(/-/g, " "))}"></li>`).join("")}</ul>
     </div>`).join("");
 
