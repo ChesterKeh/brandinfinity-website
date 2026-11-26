@@ -130,9 +130,10 @@ window.PRODUCTS = [
 ];
 
 window.PARTNERS = [
-  "universal","sony-pictures","warner-bros","prime-video","hasbro","xbox-game-studios","hoyoverse",
-  "anker","tumi","onitsuka-tiger","heinemann","tictac","bridgestone","5-hour-energy","lexus","honor",
-  "oppo","realme","lenovo","acer","msi","rog","hyperx","zotac","aoc","klook","traveloka","oreo",
-  "hershey","mms","mentos","chupa-chups","alpenliebe","haagen-dazs","baskin-robbins","dunkin",
-  "pizza-hut","lux","lynx","gillette","caltex","chevron"
+  "hasbro","sony-pictures","hoyoverse","xbox-game-studios","universal","prime-video","warner-bros",
+  "rog","tumi","lenovo","pizza-hut","tictac","onitsuka-tiger","mentos",
+  "realme","traveloka","oreo","baskin-robbins","mms","aoc","alpenliebe",
+  "lynx","bridgestone","lux","chupa-chups","msi","hyperx","haagen-dazs",
+  "dunkin","klook","lexus","acer","chevron","5-hour-energy","anker",
+  "honor","heinemann","oppo","caltex","gillette","hershey","zotac"
 ];

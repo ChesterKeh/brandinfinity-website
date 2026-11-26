@@ -311,3 +311,10 @@ p.h-sec { margin: 0; }
 .car-btns button:hover { color: var(--red); }
 .bar-all { margin-top: 0; }
 @media (max-width: 720px) { .slide-m { height: 62vw; min-height: 240px; } }
+
+/* Partner logos: full colour on white, same order as brandinfinity.sg */
+.logo-grid { background: #fff; border: 0; padding: clamp(24px, 4vw, 56px) clamp(12px, 3vw, 48px); row-gap: clamp(8px, 2vw, 28px); }
+.logo-grid li { border: 0; padding: clamp(10px, 1.6vw, 22px); aspect-ratio: 16 / 9; }
+.logo-grid li:hover { background: transparent; }
+.logo-grid img { filter: none; opacity: 1; mix-blend-mode: normal; max-height: clamp(34px, 5vw, 78px); transition: transform .3s; }
+.logo-grid li:hover img { transform: scale(1.08); }
