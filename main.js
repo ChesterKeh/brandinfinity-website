@@ -179,9 +179,17 @@
     </div>`).join("");
 
   /* ---------- 04 Services accordion ---------- */
-  $$(".svc-row").forEach((btn) => btn.addEventListener("click", () => {
+  // Each service shows a matching campaign still beside the list (like flipping through posters)
+  const svcItems = $$("#svc > li");
+  const svcShow = (k) => {
+    $$(".svc-media img").forEach((im) => im.classList.toggle("is-on", +im.dataset.for === k));
+    const cap = $("#svcCap"); if (cap) cap.textContent = svcItems[k].dataset.cap || "";
+  };
+  svcItems.forEach((li, k) => li.addEventListener("mouseenter", () => svcShow(k)));
+  $$(".svc-row").forEach((btn, k) => btn.addEventListener("click", () => {
     const open = btn.getAttribute("aria-expanded") !== "true";
     btn.setAttribute("aria-expanded", open); btn.nextElementSibling.hidden = !open;
+    if (open) svcShow(k);
   }));
 
   /* ---------- Case study page ---------- */
