@@ -27,6 +27,7 @@
   // Logo marquee (list duplicated for a seamless loop)
   const logos = (window.PARTNERS || []).map((n) => `<img src="assets/logos/${n}.png" alt="${esc(n.replace(/-/g, " "))}" loading="lazy">`).join("");
   $("#marquee").innerHTML = logos + logos.replace(/alt="[^"]*"/g, 'alt="" aria-hidden="true"');
+  $("#logoWall").innerHTML = (window.PARTNERS || []).map((n) => `<li><img src="assets/logos/${n}.png" alt="${esc(n.replace(/-/g, " "))}" loading="lazy"></li>`).join("");
 
   // Work grid
   const grid = $("#workGrid");
@@ -41,7 +42,7 @@
         <p>${esc(p.summary)}</p>
       </span>
     </button>`).join("") + `
-    <a class="card featured card-cta reveal" href="#contact">
+    <a class="card card-cta reveal" href="#contact">
       <span class="card-body">
         <span class="card-cat">Next up</span>
         <h3>Your brand<span class="x">×</span>the next big IP</h3>
@@ -67,7 +68,7 @@
     $("#modalTags").innerHTML = (p.tags || []).map((t) => `<li>${esc(t)}</li>`).join("");
     $("#modalMedia").innerHTML =
       (p.video ? `<video src="${esc(p.video)}" poster="${esc(p.images[0])}" controls autoplay muted loop playsinline></video>` : "") +
-      p.images.filter((_, i) => !(p.video && i === 0)).map((src) => `<img src="${esc(src)}" alt="${esc(p.brand)} × ${esc(p.ip)}">`).join("");
+      p.images.filter((src) => !(p.video && src.startsWith("assets/video/"))).map((src) => `<img src="${esc(src)}" alt="${esc(p.brand)} × ${esc(p.ip)}">`).join("");
     modal.showModal();
   });
   const closeModal = () => { modal.close(); $("#modalMedia").innerHTML = ""; };
