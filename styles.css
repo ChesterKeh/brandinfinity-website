@@ -263,3 +263,7 @@ body.lock { overflow: hidden; }
 [hidden] { display: none !important; }
 .row { text-decoration: none; color: inherit; }
 .case-bar > button { justify-self: start; }
+@media (max-width: 720px) {
+  .hdr-nav { visibility: hidden; transition: transform .35s, visibility 0s .35s; }
+  .hdr-nav.open { visibility: visible; transition: transform .35s; }
+}
