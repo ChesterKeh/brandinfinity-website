@@ -33,11 +33,12 @@
 
   /* Carousel: a filmstrip of every project, images at natural proportions */
   const track = $("#carTrack");
-  track.innerHTML = P.map((p, i) => `
+  const H = P.map((p, i) => [p, i]).filter(([p]) => p.highlight);
+  track.innerHTML = (H.length ? H : P.map((p, i) => [p, i])).map(([p, i], k) => `
     <a class="slide" href="#project/${slug(p)}" aria-label="${esc(p.brand)} × ${esc(p.ip)}">
       <span class="slide-m">${p.video
-        ? `<video src="${esc(p.video)}" poster="${esc(p.images[p.images.findIndex((s) => s.startsWith("assets/video/"))] || p.images[0])}" muted loop playsinline ${i === 0 ? "autoplay" : 'preload="none"'}></video>`
-        : `<img src="${esc(p.images[0])}" alt="" ${i > 2 ? 'loading="lazy"' : ""}>`}</span>
+        ? `<video src="${esc(p.video)}" poster="${esc(p.images[p.images.findIndex((s) => s.startsWith("assets/video/"))] || p.images[0])}" muted loop playsinline ${k === 0 ? "autoplay" : 'preload="none"'}></video>`
+        : `<img src="${esc(p.images[0])}" alt="" ${k > 2 ? 'loading="lazy"' : ""}>`}</span>
       <span class="cap"><span class="mono n">${pad(i)}</span><span class="h">${esc(p.brand)}<i>×</i>${esc(p.ip)}</span><span class="mono d">${esc(CAT[p.category] || p.category)}</span></span>
     </a>`).join("");
   const slides = $$(".slide", track);
@@ -50,12 +51,23 @@
   };
   const goSlide = (k) => {
     si = (k + slides.length) % slides.length;
+    driving = Date.now() + 900;
     track.scrollTo({ left: slides[si].offsetLeft - slides[0].offsetLeft, behavior: reduced ? "auto" : "smooth" });
     setUI();
   };
   $("#carPrev").addEventListener("click", () => { goSlide(si - 1); restart(); });
   $("#carNext").addEventListener("click", () => { goSlide(si + 1); restart(); });
-  let st; track.addEventListener("scroll", () => { clearTimeout(st); st = setTimeout(() => { si = near(); setUI(); }, 80); }, { passive: true });
+  // Sync the counter when someone swipes; ignore our own button-driven scrolls,
+  // and at the far end (where the last slides can't reach the left edge) keep the chosen slide.
+  let st, driving = 0;
+  track.addEventListener("scroll", () => {
+    clearTimeout(st);
+    st = setTimeout(() => {
+      if (Date.now() < driving) return;
+      const atEnd = track.scrollLeft >= track.scrollWidth - track.clientWidth - 4;
+      const n = near(); si = atEnd ? Math.max(si, n) : n; setUI();
+    }, 80);
+  }, { passive: true });
   const restart = () => { clearInterval(auto); if (!reduced) auto = setInterval(() => { if (!hoverCar && inView) goSlide(si + 1); }, 4500); };
   let hoverCar = false, inView = false;
   $("#carousel").addEventListener("mouseenter", () => (hoverCar = true));

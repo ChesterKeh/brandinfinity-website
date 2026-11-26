@@ -1,17 +1,19 @@
 /*
   PROJECTS — edit this list to add, remove or reorder work on the site.
   Each project:
-    brand, ip        : the two names shown as "Brand × IP"
-    category         : "film" | "gaming" | "streaming" | "licensing"  (drives the filter chips)
-    summary          : one-line description shown on the card and in the detail view
-    tags             : short labels shown in the detail view
-    images           : paths under assets/work/ (first one is the cover)
-    video (optional) : path to an mp4 shown in the detail view
-    featured (opt.)  : true = shown as a large card
+    brand, ip          : the two names shown as "Brand × IP"
+    category           : "film" | "gaming" | "streaming" | "licensing"  (drives the filter buttons)
+    summary            : one-line description shown in the case study
+    tags               : short scope labels shown in the case study
+    images             : paths under assets/ (the first one is the cover)
+    video     (opt.)   : path to an mp4, plays in the carousel/grid on hover and in the case study
+    cover     (opt.)   : a different image for the grid card
+    highlight (opt.)   : true = also shown in the Our Work carousel
 */
 window.PROJECTS = [
   {
     brand: "Roborock", ip: "The Garfield Movie",
+    highlight: true,   // shown in the Our Work carousel
     category: "film",
     summary: "A campaign film and product placement putting Roborock's robot vacuum into the world of The Garfield Movie, cleaning up after Garfield and Odie.",
     tags: ["Film partnership", "Product placement", "Campaign film"],
@@ -21,6 +23,7 @@ window.PROJECTS = [
   },
   {
     brand: "Heinemann", ip: "Monopoly",
+    highlight: true,   // shown in the Our Work carousel
     category: "licensing",
     summary: "Sweet Dreams by Heinemann reimagined around the Monopoly board, with a travel-themed edition and campaign film.",
     tags: ["Licensing", "Product creation", "Campaign film"],
@@ -30,6 +33,7 @@ window.PROJECTS = [
   },
   {
     brand: "realme", ip: "Spider-Man: Far From Home",
+    highlight: true,   // shown in the Our Work carousel
     category: "film",
     summary: "A Spider-Man: Far From Home edition of the realme smartphone, with a custom superhero theme and cinematic launch film.",
     tags: ["Film tie-in", "Product integration", "Launch film"],
@@ -39,6 +43,7 @@ window.PROJECTS = [
   },
   {
     brand: "Anker", ip: "Transformers",
+    highlight: true,   // shown in the Our Work carousel
     category: "film",
     summary: "A Transformers-themed Anker product and launch campaign built around the film release.",
     tags: ["Film tie-in", "Product integration", "Launch campaign"],
@@ -46,6 +51,7 @@ window.PROJECTS = [
   },
   {
     brand: "TUMI", ip: "Bullet Train",
+    highlight: true,   // shown in the Our Work carousel
     category: "film",
     summary: "A TUMI partnership with Sony Pictures' Bullet Train, carried through co-branded creative.",
     tags: ["Film partnership", "Co-branded creative"],
@@ -53,6 +59,7 @@ window.PROJECTS = [
   },
   {
     brand: "Onitsuka Tiger", ip: "Cinderella",
+    highlight: true,   // shown in the Our Work carousel
     category: "film",
     summary: "Onitsuka Tiger stepped into the world of Cinderella with a co-branded campaign.",
     tags: ["Film partnership", "Fashion", "Co-branded creative"],
@@ -88,6 +95,7 @@ window.PROJECTS = [
   },
   {
     brand: "Vitakraft", ip: "DC League of Super-Pets",
+    highlight: true,   // shown in the Our Work carousel
     category: "film",
     summary: "An on-pack promotion giving pet owners the chance to win movie tickets to DC League of Super-Pets.",
     tags: ["Film tie-in", "On-pack promotion", "In-trade"],
@@ -102,6 +110,7 @@ window.PROJECTS = [
   },
   {
     brand: "Tic Tac", ip: "Mobile Legends: Bang Bang",
+    highlight: true,   // shown in the Our Work carousel
     category: "gaming",
     summary: "A Tic Tac promotion where purchases unlocked in-game Diamonds, skins and heroes for Mobile Legends players.",
     tags: ["Gaming", "Sales mechanic", "In-game rewards"],
