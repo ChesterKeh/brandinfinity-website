@@ -1,6 +1,8 @@
 # Brand Infinity — website
 
-A modern, single-page redesign of [brandinfinity.sg](https://www.brandinfinity.sg/), built to showcase projects and drive partnership enquiries.
+A single-page, editorial redesign of [brandinfinity.sg](https://www.brandinfinity.sg/), built to showcase projects and drive partnership enquiries.
+
+Work can be browsed as an editorial **Grid** or a text **Index** (hover a row to preview). Each project opens as a full-screen case study with its own shareable link, e.g. `/#project/tumi-bullet-train`.
 
 Plain HTML, CSS and JavaScript. No build step, so it runs on GitHub Pages, Netlify, Vercel or any static host.
 
@@ -24,13 +26,12 @@ All work is in **`projects.js`**. Copy an entry, change the fields, and drop ima
   tags: ["Film tie-in", "Retail"],
   images: ["assets/work/my-project.webp"],
   video: "assets/video/my-project.mp4",   // optional
-  featured: true                          // optional: large card
 }
 ```
 
-Tip: keep featured cards in pairs so the grid rows stay even.
+The grid layout alternates large and small images automatically, so order in the list is the order on the page.
 
-The partner logo strip is the `PARTNERS` list at the bottom of the same file (file names in `assets/logos/`).
+The partner logo grid is the `PARTNERS` list at the bottom of the same file (file names in `assets/logos/`).
 
 ## Contact form
 
