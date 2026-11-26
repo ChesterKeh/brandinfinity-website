@@ -166,6 +166,12 @@
 
   /* ---------- 03 Partners, grouped ---------- */
   const G = window.PARTNER_GROUPS || [];
+  const LINKS = window.PARTNER_LINKS || {};
+  // Hero studio tiles link out too
+  $$(".trusted li").forEach((li) => {
+    const img = $("img", li); const n = (img.getAttribute("src").match(/logos\/(.+)\.png$/) || [])[1];
+    if (n && LINKS[n] && !$("a", li)) li.innerHTML = `<a href="${esc(LINKS[n])}" target="_blank" rel="noopener" aria-label="${esc(img.alt)} website (opens in a new tab)">${li.innerHTML}</a>`;
+  });
   // Balance logo sizes: wide logos get shorter, tall logos taller, so each carries similar visual weight
   const sizeLogo = (img) => {
     if (!img.naturalWidth) return;
@@ -180,7 +186,11 @@
   $("#partnerGroups").innerHTML = G.map((g) => `
     <div class="pgroup">
       <h3>${esc(g.name)}</h3>
-      <ul class="plogos">${g.logos.map((n) => `<li><img src="assets/logos/${n}.png" alt="${esc(n.replace(/-/g, " "))}"></li>`).join("")}</ul>
+      <ul class="plogos">${g.logos.map((n) => {
+        const img = `<img src="assets/logos/${n}.png" alt="${esc(n.replace(/-/g, " "))}">`;
+        const url = LINKS[n];
+        return `<li>${url ? `<a href="${esc(url)}" target="_blank" rel="noopener" aria-label="${esc(n.replace(/-/g, " "))} website (opens in a new tab)">${img}</a>` : img}</li>`;
+      }).join("")}</ul>
     </div>`).join("");
 
   /* ---------- 04 Services accordion ---------- */
@@ -271,6 +281,21 @@
     const body = `Name: ${d.get("name")}\nCompany: ${d.get("company")}\nEmail: ${d.get("email")}\nInterested in: ${d.getAll("interest").join(", ") || "Not specified"}\n\n${d.get("message")}`;
     location.href = `mailto:connect@brandinfinity.sg?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     $("#formNote").textContent = "Your email app should open now. If not, write to connect@brandinfinity.sg.";
+  });
+
+  /* ---------- Light / dark toggle (light is the default; choice remembered) ---------- */
+  const root = document.documentElement, themeBtn = $("#themeBtn"), metaTheme = $('meta[name="theme-color"]');
+  const applyTheme = (t) => {
+    if (t === "dark") root.dataset.theme = "dark"; else delete root.dataset.theme;
+    themeBtn.setAttribute("aria-label", t === "dark" ? "Switch to light mode" : "Switch to dark mode");
+    themeBtn.setAttribute("aria-pressed", t === "dark");
+    if (metaTheme) metaTheme.content = t === "dark" ? "#0b0b0c" : "#f4f1eb";
+  };
+  applyTheme(root.dataset.theme === "dark" ? "dark" : "light");
+  themeBtn.addEventListener("click", () => {
+    const next = root.dataset.theme === "dark" ? "light" : "dark";
+    applyTheme(next);
+    try { localStorage.setItem("bi-theme", next); } catch (e) {}
   });
 
   $("#year").textContent = new Date().getFullYear();

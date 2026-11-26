@@ -150,3 +150,52 @@ window.PARTNER_GROUPS = [
   { name: "Automotive & Energy", logos: ["lexus", "bridgestone", "chevron", "caltex"] },
   { name: "FMCG: Food, Beverage & Personal Care", logos: ["heinemann", "tictac", "mentos", "oreo", "mms", "hershey", "alpenliebe", "chupa-chups", "haagen-dazs", "baskin-robbins", "dunkin", "pizza-hut", "5-hour-energy", "lynx", "lux", "gillette"] }
 ];
+
+/*
+  PARTNER_LINKS — where each partner logo goes when clicked (opens in a new tab).
+  Change a URL here to point a logo somewhere else; remove a line to make that logo unclickable.
+*/
+window.PARTNER_LINKS = {
+  "sony-pictures": "https://www.sonypictures.com/",
+  "universal": "https://www.universalpictures.com/",
+  "warner-bros": "https://www.warnerbros.com/",
+  "prime-video": "https://www.primevideo.com/",
+  "hasbro": "https://corporate.hasbro.com/",
+  "xbox-game-studios": "https://www.xbox.com/",
+  "hoyoverse": "https://www.hoyoverse.com/",
+  "rog": "https://rog.asus.com/",
+  "hyperx": "https://www.hyperx.com/",
+  "msi": "https://www.msi.com/",
+  "zotac": "https://www.zotac.com/",
+  "aoc": "https://www.aoc.com/",
+  "lenovo": "https://www.lenovo.com/",
+  "acer": "https://www.acer.com/",
+  "honor": "https://www.honor.com/",
+  "oppo": "https://www.oppo.com/",
+  "realme": "https://www.realme.com/",
+  "anker": "https://www.anker.com/",
+  "tumi": "https://www.tumi.com/",
+  "onitsuka-tiger": "https://www.onitsukatiger.com/",
+  "traveloka": "https://www.traveloka.com/",
+  "klook": "https://www.klook.com/",
+  "lexus": "https://www.lexus.com/",
+  "bridgestone": "https://www.bridgestone.com/",
+  "chevron": "https://www.chevron.com/",
+  "caltex": "https://www.caltex.com/",
+  "heinemann": "https://www.gebr-heinemann.de/en/",
+  "tictac": "https://www.tictac.com/",
+  "mentos": "https://www.mentos.com/",
+  "oreo": "https://www.oreo.com/",
+  "mms": "https://www.mms.com/",
+  "hershey": "https://www.thehersheycompany.com/",
+  "alpenliebe": "https://www.perfettivanmelle.com/",
+  "chupa-chups": "https://www.chupachups.com/",
+  "haagen-dazs": "https://www.haagendazs.us/",
+  "baskin-robbins": "https://www.baskinrobbins.com/",
+  "dunkin": "https://www.dunkindonuts.com/",
+  "pizza-hut": "https://www.pizzahut.com/",
+  "5-hour-energy": "https://5hourenergy.com/",
+  "lynx": "https://www.lynxformen.com/",
+  "lux": "https://www.lux.com/",
+  "gillette": "https://gillette.com/"
+};

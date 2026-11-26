@@ -44,3 +44,9 @@ The form opens the visitor's email app with a pre-filled message to connect@bran
 ## Publish on GitHub Pages
 
 Repository **Settings → Pages → Deploy from a branch → `main` / root**.
+
+## Partner links and light/dark mode
+
+Each partner logo opens that brand's website in a new tab. The addresses are in the `PARTNER_LINKS` list at the bottom of `projects.js`.
+
+The site opens in light mode. The sun/moon button in the header switches to dark mode, and the visitor's choice is remembered.

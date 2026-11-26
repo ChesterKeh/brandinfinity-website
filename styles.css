@@ -748,6 +748,82 @@ body { background: var(--paper); color: var(--ink); }
   .plogos li { height: 48px; padding: 6px 8px; }
 }
 
+/* ==========================================================================
+   Round 8: light mode (default) with a dark/light rhythm
+   Light: content sections on warm off-white. Cinematic moments stay dark:
+   hero → [brand ticker] → light showcase → dark launch band → light services
+   → dark "why us" scene → light contact → dark end-credits footer.
+   html[data-theme="dark"] keeps the all-dark version.
+   ========================================================================== */
+html:not([data-theme="dark"]) {
+  --paper: #f4f1eb;
+  --paper-2: #e9e4db;
+  --ink: #161412;
+  --ink-2: rgba(22,20,18,.62);
+  --rule: rgba(22,20,18,.13);
+}
+html:not([data-theme="dark"]) body { background: var(--paper); color: var(--ink); }
+
+/* Content "dark" sections (services, contact) turn light; the footer stays dark */
+html:not([data-theme="dark"]) .dark:not(.ftr) { --ink: #161412; --ink-2: rgba(22,20,18,.62); --rule: rgba(22,20,18,.13); background: var(--paper); color: var(--ink); }
+html:not([data-theme="dark"]) .dark:not(.ftr).grain::after { opacity: .035; mix-blend-mode: multiply; }
+
+/* Buttons: dark on light, white on the dark bands */
+html:not([data-theme="dark"]) .btn,
+html:not([data-theme="dark"]) .hdr-cta { background: var(--ink); color: #fff; }
+html:not([data-theme="dark"]) .btn:hover,
+html:not([data-theme="dark"]) .hdr-cta:hover { background: var(--red); color: #fff; }
+html:not([data-theme="dark"]) .btn-light,
+html:not([data-theme="dark"]) .hdr.on-dark .hdr-cta,
+html:not([data-theme="dark"]) .ftr .btn { background: #fff; color: #141414; }
+html:not([data-theme="dark"]) .btn-light:hover,
+html:not([data-theme="dark"]) .hdr.on-dark .hdr-cta:hover { background: var(--red); color: #fff; }
+html:not([data-theme="dark"]) .btn-ghost-light { background: transparent; color: #fff; border-color: rgba(255,255,255,.6); }
+html:not([data-theme="dark"]) .btn-ghost-light:hover { background: #fff; color: #141414; }
+
+/* Header: light glass once past the hero */
+html:not([data-theme="dark"]) .hdr:not(.on-dark) { background: rgba(244,241,235,.88); border-bottom-color: var(--rule); }
+
+/* Filters, toggles, show-all, form chips */
+html:not([data-theme="dark"]) .filters .is-on,
+html:not([data-theme="dark"]) .views .is-on { background: var(--ink); color: #fff; border-color: var(--ink); }
+html:not([data-theme="dark"]) .filters .is-on sup,
+html:not([data-theme="dark"]) .filters .is-on:hover,
+html:not([data-theme="dark"]) .views .is-on:hover { color: #fff; }
+html:not([data-theme="dark"]) .show-all:hover { background: var(--ink); color: #fff; border-color: var(--ink); }
+html:not([data-theme="dark"]) .checks input:checked + span { background: var(--ink); color: #fff; border-color: var(--ink); }
+html:not([data-theme="dark"]) .tile:hover h3,
+html:not([data-theme="dark"]) .slide:hover h3 { color: var(--ink); }
+html:not([data-theme="dark"]) .index:hover .row { color: rgba(22,20,18,.32); }
+html:not([data-theme="dark"]) .index .row:hover { color: var(--ink); }
+
+/* Partners: white chips get a hairline so they sit on the off-white */
+html:not([data-theme="dark"]) .plogos li { box-shadow: 0 0 0 1px var(--rule); }
+html:not([data-theme="dark"]) .plogos li:hover { box-shadow: 0 0 0 2px var(--orange); }
+
+/* Colour flow: a warm glow right under the ticker, and soft warm wash into each dark band */
+html:not([data-theme="dark"]) #work { background: radial-gradient(120% 420px at 50% 0, rgba(242,107,29,.10), transparent 70%); }
+html:not([data-theme="dark"]) #partners { background: linear-gradient(to bottom, transparent 55%, rgba(211,18,26,.05)); padding-bottom: var(--sec); }
+html:not([data-theme="dark"]) #partners + .cta-band { margin-top: 0; }
+html:not([data-theme="dark"]) #services { background: linear-gradient(to bottom, var(--paper), var(--paper) 70%, #efe9e0); }
+
+/* Contact poster on light */
+html:not([data-theme="dark"]) .poster-bg img { opacity: .16; filter: saturate(1.1); }
+html:not([data-theme="dark"]) .poster-bg::after { background: linear-gradient(to bottom, var(--paper) 0%, rgba(244,241,235,.7) 40%, var(--paper) 100%); }
+html:not([data-theme="dark"]) .cta-band { border: 0; }
+
+/* Theme toggle */
+.theme-btn { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 50%; border: 1px solid currentColor; opacity: .85; transition: opacity .2s, color .2s, background .2s; }
+.theme-btn:hover { opacity: 1; color: var(--orange); }
+.theme-btn .i-sun { display: none; }
+html[data-theme="dark"] .theme-btn .i-sun { display: block; }
+html[data-theme="dark"] .theme-btn .i-moon { display: none; }
+@media (max-width: 760px) { .theme-btn { margin-left: auto; } .theme-btn + .hdr-li { margin-left: 0; } }
+
+/* Logo links */
+.plogos a, .trusted a { display: grid; place-items: center; width: 100%; height: 100%; }
+.plogos li { cursor: pointer; }
+
 @media (hover: none) { .hover-img { display: none; } }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
