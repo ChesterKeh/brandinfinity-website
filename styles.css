@@ -589,6 +589,88 @@ body.lock { overflow: hidden; }
   .grid .tile-cta { min-height: 150px; }
 }
 
+/* ==========================================================================
+   Round 6: brand system from the Brand Infinity logo
+   - Colours: brand red + orange from the rings, blended orange → red as in the mark
+   - Type: Lexend (matches the wordmark) for text and labels; Archivo condensed for poster headlines
+   - Motif: the two crossed rings
+   ========================================================================== */
+:root {
+  --red: #d3121a;
+  --orange: #f26b1d;
+  --grad: linear-gradient(120deg, var(--orange) 0%, var(--red) 70%);
+  --sans: "Lexend", "Helvetica Neue", Arial, sans-serif;
+  --mono: var(--sans);
+}
+body { font-family: var(--sans); font-weight: 300; }
+strong, b, h3, .btn, .hdr-cta, .logo, .sub-title, .tile-cap h3, .slide-cap h3, .pgroup h3, .models dt { font-weight: 500; }
+input, textarea, .case-meta .sum { font-family: var(--sans); }
+.mono { font-family: var(--sans); font-weight: 600; font-size: 11px; letter-spacing: .14em; }
+
+/* Poster headlines keep the condensed display face */
+.hero-title, .sec-title, .scene-title, .poster-title, .cta-band-title, .ticker-run span, .svc-row .t,
+.tile-cta strong, .row .b, .case-title, .case-cta strong, .ftr-word, .credits dd, .big-mail, .facts dd {
+  font-family: var(--display);
+}
+@media (max-width: 760px) { .hdr-nav a { font-family: var(--display); } }
+
+/* Kickers styled like the logo tagline: bold red capitals */
+.sec-kicker { color: var(--red); font-weight: 700; letter-spacing: .16em; }
+.dark .sec-kicker, .scene .sec-kicker, .cta-band .sec-kicker { color: var(--orange); }
+.hero-eyebrow { font-weight: 600; }
+
+/* Highlighted words: brand gradient underline */
+.kw::after { background: var(--grad); height: .08em; }
+.kw.is-on, .kw:hover, .kw:focus-visible { color: #ff3b2f; }
+
+/* Trusted by the studios: full-colour logos on white tiles */
+.trusted ul { gap: 10px; }
+.trusted li { width: 132px; height: 60px; display: grid; place-items: center; background: #fff; padding: 8px 14px; }
+.trusted img { filter: none; opacity: 1; max-width: 100%; max-height: 40px; }
+.trusted li:hover { outline: 2px solid var(--orange); outline-offset: 2px; }
+
+/* Ticker: brand gradient with ring separators */
+.ticker { background: var(--grad); }
+.ticker-run i { display: inline-flex; opacity: 1; }
+.ring { width: .9em; height: .9em; color: #fff; opacity: .85; }
+.ticker-run i .ring { width: clamp(22px, 2.6vw, 40px); height: clamp(22px, 2.6vw, 40px); }
+
+/* Buttons and accents pick up the brand colours */
+.btn:hover, .hdr-cta:hover, .hdr.on-dark .hdr-cta:hover, .show-all:hover, .tile-cta:hover { background: var(--red); border-color: var(--red); color: #fff; }
+.filters .is-on, .views .is-on { background: var(--ink); }
+.dot { background: var(--orange); }
+.car-dots button[aria-selected="true"] { background: var(--grad); }
+.svc-row:hover .t { color: var(--orange); }
+
+/* CTA band: the hinge into the dark half, with a large ring watermark */
+.cta-band { position: relative; overflow: hidden; margin-top: var(--sec); background: #0b0b0c; }
+.cta-rings { position: absolute; right: -6vw; top: 50%; width: clamp(320px, 42vw, 620px); height: clamp(320px, 42vw, 620px); transform: translateY(-50%); color: var(--orange); opacity: .22; pointer-events: none; }
+.cta-band-grid { position: relative; z-index: 1; }
+.cta-band-title span { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.cta-band + .sec.dark { margin-top: 0; border-top: 1px solid rgba(255,255,255,.08); }
+
+/* Dark half accents */
+.scene-title span, .poster-title span { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.poster .big-mail { border-image: var(--grad) 1; border-bottom-style: solid; }
+
+/* Footer: ring watermark + red/orange credit */
+.ftr { position: relative; overflow: hidden; }
+.ftr-rings { position: absolute; right: -8vw; bottom: -10vw; width: clamp(300px, 46vw, 680px); height: clamp(300px, 46vw, 680px); color: var(--red); opacity: .12; pointer-events: none; }
+.ftr .wrap { position: relative; z-index: 1; }
+.ftr-prod { color: var(--orange); }
+
+.trusted li { width: 150px; height: 68px; padding: 8px 12px; }
+.trusted img { width: auto; height: auto; max-width: 100%; max-height: 50px; object-fit: contain; }
+.scene + .sec.poster { margin-top: 0; }
+
+@media (max-width: 760px) {
+  .trusted ul { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); width: 100%; gap: 8px; }
+  .trusted li { width: auto; height: 48px; padding: 6px 8px; }
+  .trusted li:nth-child(n+7) { display: grid; }
+  .trusted img { max-height: 30px; }
+  .cta-rings { right: -30vw; top: 20%; opacity: .16; }
+}
+
 @media (hover: none) { .hover-img { display: none; } }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }

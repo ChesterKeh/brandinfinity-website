@@ -174,8 +174,8 @@
     const r = img.naturalWidth / img.naturalHeight;
     img.style.height = Math.round(Math.min(max, Math.max(14, Math.sqrt(area / r)))) + "px";
   };
-  document.addEventListener("load", (e) => { if (e.target.closest && e.target.closest(".plogos, .trusted")) sizeLogo(e.target); }, true);
-  const sizeAll = () => $$(".plogos img, .trusted img").forEach(sizeLogo);
+  document.addEventListener("load", (e) => { if (e.target.closest && e.target.closest(".plogos")) sizeLogo(e.target); }, true);
+  const sizeAll = () => $$(".plogos img").forEach(sizeLogo);
   addEventListener("load", sizeAll); sizeAll();
   $("#partnerGroups").innerHTML = G.map((g) => `
     <div class="pgroup">
