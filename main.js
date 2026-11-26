@@ -124,16 +124,21 @@
     const n = c === "all" ? P.length : P.filter((p) => p.category === c).length;
     return `<button data-f="${c}" aria-pressed="false">${c === "all" ? "All" : CAT[c] || c}<sup>${n}</sup></button>`;
   }).join("");
+  // Collapsed by default: first 5 projects + the CTA tile; "Show all" reveals the rest (works without JS too)
+  $$(".tile[data-cat]", grid).forEach((t, k) => t.classList.toggle("more", k >= 5));
+  $("#allCount").textContent = P.length;
   const setFilter = (f) => {
     $$("#filters button").forEach((x) => { const on = x.dataset.f === f; x.classList.toggle("is-on", on); x.setAttribute("aria-pressed", on); });
     $$(".tile[data-cat], .row").forEach((el) => el.classList.toggle("hide", f !== "all" && el.dataset.cat !== f));
     $(".tile-cta").hidden = f !== "all";
+    grid.classList.toggle("filtered", f !== "all");
+    $("#showAllBtn").hidden = f !== "all";
   };
   $$("#filters button").forEach((b) => b.addEventListener("click", () => setFilter(b.dataset.f)));
   setFilter("all");
   $$(".views button").forEach((b) => b.addEventListener("click", () => {
     $$(".views button").forEach((x) => { x.classList.toggle("is-on", x === b); x.setAttribute("aria-pressed", x === b); });
-    const idx = b.dataset.view === "index"; $("#index").hidden = !idx; grid.hidden = idx;
+    const idx = b.dataset.view === "index"; $("#index").hidden = !idx; grid.hidden = idx; $("#showAllBtn").hidden = idx || grid.classList.contains("filtered");
   }));
 
   /* Hero keywords: hover previews that category, click jumps to its projects */
@@ -165,7 +170,7 @@
   const sizeLogo = (img) => {
     if (!img.naturalWidth) return;
     const small = innerWidth < 760, hero = !!img.closest(".trusted");
-    const area = hero ? (small ? 700 : 1500) : (small ? 1500 : 2300), max = hero ? (small ? 30 : 42) : 56;
+    const area = hero ? (small ? 700 : 1500) : (small ? 900 : 1700), max = hero ? (small ? 38 : 42) : (small ? 34 : 46);
     const r = img.naturalWidth / img.naturalHeight;
     img.style.height = Math.round(Math.min(max, Math.max(14, Math.sqrt(area / r)))) + "px";
   };

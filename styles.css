@@ -504,6 +504,91 @@ body.lock { overflow: hidden; }
 .ftr-prod { font-size: clamp(13px, 1.3vw, 18px); letter-spacing: .45em; }
 @media (max-width: 520px) { .ftr .ftr-cols { grid-template-columns: 1fr; gap: 20px; } }
 
+/* ==========================================================================
+   Round 5: tighter page (about 13 → 8 screens)
+   ========================================================================== */
+:root { --sec: clamp(64px, 8vw, 112px); }
+.vh { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+.ticker + .sec { padding-top: clamp(56px, 6vw, 88px); }
+
+/* All projects: collapsed to 5 + CTA, "Show all" toggle (pure CSS) */
+.tile.hide { display: none !important; }
+.grid .tile.more { display: none; }
+#showAll:checked ~ .grid .tile.more, .grid.filtered .tile.more { display: block; }
+.show-all { display: block; margin-top: var(--gap); padding: 16px; text-align: center; border: 1px solid var(--ink); font-weight: 600; cursor: pointer; transition: background .2s, color .2s; }
+.show-all:hover { background: var(--ink); color: #fff; }
+.show-all .less-t, #showAll:checked ~ .show-all .more-t { display: none; }
+#showAll:checked ~ .show-all .less-t { display: inline; }
+#showAll:focus-visible ~ .show-all { outline: 2px solid var(--red); outline-offset: 3px; }
+.sub-head { margin-top: clamp(48px, 5vw, 72px); }
+
+/* Products: one row on desktop, swipe strip on phones */
+.tiles { grid-template-columns: repeat(6, minmax(0, 1fr)); gap: var(--gap); }
+.tiles .frame { aspect-ratio: 1 / 1; }
+.tiles .tile-cap { grid-template-columns: 1fr; gap: 2px; }
+.tiles .tile-cap h3 { font-size: 15px; }
+
+/* CTA band & partners: tighter */
+.cta-band { margin-top: var(--sec); padding: clamp(44px, 6vw, 80px) 0; }
+.pgroup { padding: clamp(12px, 1.4vw, 18px) clamp(16px, 2vw, 28px); grid-template-columns: 200px 1fr; align-items: center; }
+.plogos li { height: 56px; }
+
+/* Services: shorter image */
+.svc-media { aspect-ratio: 4 / 3; }
+.svc-row { padding: clamp(14px, 1.6vw, 20px) 0; }
+.sec.dark { margin-top: var(--sec); padding-bottom: var(--sec); }
+
+/* Why us: slimmer letterbox */
+.scene { padding: calc(6vh + clamp(32px, 4.5vw, 64px)) 0; }
+.scene::before { border-top-width: 6vh; border-bottom-width: 6vh; }
+.scene-title { font-size: clamp(44px, 6.4vw, 108px); margin-bottom: clamp(20px, 3vw, 36px); }
+.credits { margin-top: clamp(28px, 3.5vw, 44px); }
+
+/* Footer: tighter */
+.ftr { padding-top: clamp(36px, 4.5vw, 60px); }
+.ftr-cols { padding-bottom: clamp(24px, 3vw, 40px); }
+
+.sec-title { font-size: clamp(32px, 4.2vw, 62px); max-width: 30ch; }
+.sec-head { margin-bottom: clamp(24px, 3vw, 40px); }
+.slide { flex-basis: min(66%, 860px); }
+.poster-title { font-size: clamp(38px, 5.4vw, 88px); max-width: 20ch; }
+.contact-lead { margin-bottom: 16px; }
+.big-mail { margin-bottom: 24px; }
+.form { gap: 14px; }
+
+.slide { min-width: 0; }
+.slide .frame { width: 100%; }
+@media (max-width: 760px) { .slide { flex-basis: 86%; } }
+@media (max-width: 980px) {
+  .grid .tile-cta { grid-column: auto; aspect-ratio: 4 / 3; min-height: 0; }
+}
+@media (max-width: 520px) {
+  .grid .tile-cta { aspect-ratio: auto; padding: 14px; }
+  .grid .tile-cta strong { font-size: 22px; }
+}
+
+@media (max-width: 1100px) { .tiles { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 760px) {
+  .tiles { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 12px; margin-inline: calc(-1 * var(--gut)); padding: 0 var(--gut) 6px; scrollbar-width: none; }
+  .tiles::-webkit-scrollbar { display: none; }
+  .tiles > li { flex: 0 0 44%; scroll-snap-align: start; }
+  .tiles > li:nth-child(5) { grid-column: auto; }
+  .tiles > li:nth-child(5) .frame { aspect-ratio: 1 / 1; }
+  .pgroup { grid-template-columns: 1fr; gap: 6px; padding: 14px 16px; }
+  .pgroup h3 { font-size: 13px; }
+  .plogos { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 4px 12px; }
+  .plogos li { height: 44px; }
+  .ftr-cols nav { display: none; }
+  .ftr-brand p { display: none; }
+  .scene-cols p { font-size: 15px; }
+  .scene-cols p:first-child { font-size: 16px; }
+  .scene-cols p:nth-child(3) { display: none; }
+  .contact-lead { font-size: 18px; }
+}
+@media (max-width: 520px) {
+  .grid .tile-cta { min-height: 150px; }
+}
+
 @media (hover: none) { .hover-img { display: none; } }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
