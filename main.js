@@ -31,12 +31,45 @@
     return `<button data-f="${c}" class="${c === "all" ? "is-on" : ""}" aria-pressed="${c === "all"}">${c === "all" ? "All" : CAT[c] || c}<sup>${n}</sup></button>`;
   }).join("");
 
+  /* Carousel: a filmstrip of every project, images at natural proportions */
+  const track = $("#carTrack");
+  track.innerHTML = P.map((p, i) => `
+    <a class="slide" href="#project/${slug(p)}" aria-label="${esc(p.brand)} × ${esc(p.ip)}">
+      <span class="slide-m">${p.video
+        ? `<video src="${esc(p.video)}" poster="${esc(p.images[p.images.findIndex((s) => s.startsWith("assets/video/"))] || p.images[0])}" muted loop playsinline ${i === 0 ? "autoplay" : 'preload="none"'}></video>`
+        : `<img src="${esc(p.images[0])}" alt="" ${i > 2 ? 'loading="lazy"' : ""}>`}</span>
+      <span class="cap"><span class="mono n">${pad(i)}</span><span class="h">${esc(p.brand)}<i>×</i>${esc(p.ip)}</span><span class="mono d">${esc(CAT[p.category] || p.category)}</span></span>
+    </a>`).join("");
+  const slides = $$(".slide", track);
+  let si = 0, auto;
+  const near = () => { let best = 0, d = Infinity; slides.forEach((s, k) => { const v = Math.abs(s.offsetLeft - track.scrollLeft - slides[0].offsetLeft); if (v < d) { d = v; best = k; } }); return best; };
+  const setUI = () => {
+    $("#carCount").textContent = `${pad(si)} / ${pad(slides.length - 1)}`;
+    $("#carBar").style.width = ((si + 1) / slides.length) * 100 + "%";
+    slides.forEach((s, k) => { const v = $("video", s); if (!v) return; if (k === si) v.play().catch(() => {}); else v.pause(); });
+  };
+  const goSlide = (k) => {
+    si = (k + slides.length) % slides.length;
+    track.scrollTo({ left: slides[si].offsetLeft - slides[0].offsetLeft, behavior: reduced ? "auto" : "smooth" });
+    setUI();
+  };
+  $("#carPrev").addEventListener("click", () => { goSlide(si - 1); restart(); });
+  $("#carNext").addEventListener("click", () => { goSlide(si + 1); restart(); });
+  let st; track.addEventListener("scroll", () => { clearTimeout(st); st = setTimeout(() => { si = near(); setUI(); }, 80); }, { passive: true });
+  const restart = () => { clearInterval(auto); if (!reduced) auto = setInterval(() => { if (!hoverCar && inView) goSlide(si + 1); }, 4500); };
+  let hoverCar = false, inView = false;
+  $("#carousel").addEventListener("mouseenter", () => (hoverCar = true));
+  $("#carousel").addEventListener("mouseleave", () => (hoverCar = false));
+  if ("IntersectionObserver" in window) new IntersectionObserver(([e]) => { inView = e.isIntersecting; }).observe(track);
+  track.addEventListener("keydown", (e) => { if (e.key === "ArrowRight") { e.preventDefault(); goSlide(si + 1); restart(); } if (e.key === "ArrowLeft") { e.preventDefault(); goSlide(si - 1); restart(); } });
+  setUI(); restart();
+
   /* Grid view: editorial layout, images at natural proportions */
   const grid = $("#grid");
   grid.innerHTML = P.map((p, i) => `
     <a class="item rv" href="#project/${slug(p)}" data-i="${i}" data-cat="${esc(p.category)}">
       <div class="media">
-        <img src="${esc(p.images[0])}" alt="${esc(p.brand)} × ${esc(p.ip)}" loading="lazy">
+        <img src="${esc(p.cover || p.images[0])}" alt="${esc(p.brand)} × ${esc(p.ip)}" loading="lazy">
         ${p.video ? `<video src="${esc(p.video)}" muted loop playsinline preload="none"></video>` : ""}
       </div>
       <div class="cap">
@@ -111,7 +144,7 @@
       requestAnimationFrame(loop);
     };
     loop();
-    document.addEventListener("mouseover", (e) => cursor.classList.toggle("on", !!e.target.closest(".item, .row, .prod-item")));
+    document.addEventListener("mouseover", (e) => cursor.classList.toggle("on", !!e.target.closest(".item, .row, .prod-item, .slide")));
   }
 
   /* Products & activations gallery: each tile opens its project */

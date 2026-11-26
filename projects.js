@@ -15,8 +15,9 @@ window.PROJECTS = [
     category: "film",
     summary: "A campaign film and product placement putting Roborock's robot vacuum into the world of The Garfield Movie, cleaning up after Garfield and Odie.",
     tags: ["Film partnership", "Product placement", "Campaign film"],
-    images: ["assets/work/roborock-garfield-3.webp", "assets/video/roborock-garfield.webp", "assets/work/roborock-garfield-2.webp", "assets/work/roborock-garfield-endcard.webp"],
-    video: "assets/video/roborock-garfield.mp4"
+    images: ["assets/video/roborock-garfield.webp", "assets/work/roborock-garfield-3.webp", "assets/work/roborock-garfield-2.webp", "assets/work/roborock-garfield-endcard.webp"],
+    video: "assets/video/roborock-garfield.mp4",
+    cover: "assets/work/roborock-garfield-2.webp"   // optional: different image for the grid card
   },
   {
     brand: "Heinemann", ip: "Monopoly",

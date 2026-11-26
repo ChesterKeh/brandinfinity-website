@@ -51,17 +51,22 @@
     </div>
   </section>
 
-  <!-- REEL -->
-  <figure class="reel">
-    <video class="reel-video" src="assets/video/roborock-garfield.mp4" poster="assets/video/roborock-garfield.webp" autoplay muted loop playsinline></video>
-    <figcaption class="mono"><span>Reel</span><span>Roborock × The Garfield Movie</span><span>Campaign film / Product placement</span></figcaption>
-  </figure>
-
   <!-- WORK -->
   <section class="work" id="work">
     <h2 class="h-big">Our Work</h2>
-    <div class="bar">
-      <p class="h-sec">Brand × IP partnerships</p>
+
+    <!-- Carousel: swipe/scroll works without JS; JS adds arrows, counter and autoplay -->
+    <div class="carousel" id="carousel" aria-roledescription="carousel" aria-label="Brand Infinity work">
+      <div class="car-track" id="carTrack" tabindex="0"></div>
+      <div class="car-ui mono">
+        <span id="carCount">01 / 01</span>
+        <div class="car-progress" aria-hidden="true"><span id="carBar"></span></div>
+        <div class="car-btns"><button id="carPrev" aria-label="Previous slide">← Prev</button><button id="carNext" aria-label="Next slide">Next →</button></div>
+      </div>
+    </div>
+
+    <div class="bar bar-all">
+      <p class="h-sec">All projects</p>
       <div class="bar-tools">
         <div class="filters mono" id="filters" role="group" aria-label="Filter by discipline"></div>
         <div class="views mono" role="group" aria-label="Layout">
