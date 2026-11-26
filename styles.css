@@ -671,6 +671,83 @@ input, textarea, .case-meta .sum { font-family: var(--sans); }
   .cta-rings { right: -30vw; top: 20%; opacity: .16; }
 }
 
+/* ==========================================================================
+   Round 7: one cinematic theme for the whole page
+   The showcase (Our Work → Partners) moves onto the same dark, film-toned
+   ground as the hero and bottom half.
+   ========================================================================== */
+:root {
+  --paper: #0b0b0c;          /* page background */
+  --paper-2: #151517;        /* image frames / raised surfaces */
+  --ink: #f4f1ec;
+  --ink-2: rgba(244,241,236,.6);
+  --rule: rgba(244,241,236,.14);
+  --dark: #060607;
+}
+body { background: var(--paper); color: var(--ink); }
+::selection { background: var(--red); color: #fff; }
+
+/* Primary buttons: white with dark text, red on hover */
+.btn, .hdr-cta, .hdr.on-dark .hdr-cta { background: #fff; color: #141414; }
+.btn:hover, .hdr-cta:hover, .hdr.on-dark .hdr-cta:hover { background: var(--red); color: #fff; }
+.circle { border-color: var(--rule); color: var(--ink); }
+.circle:hover { background: var(--grad); border-color: transparent; color: #fff; }
+
+/* Header: dark glass once scrolled */
+.hdr { background: rgba(11,11,12,.82); border-bottom-color: var(--rule); }
+.hdr.on-dark { background: transparent; border-color: transparent; }
+
+/* Filters / view toggles */
+.filters .is-on, .views .is-on { background: #fff; color: #141414; border-color: #fff; }
+.filters .is-on:hover, .views .is-on:hover { color: #141414; }
+.filters .is-on sup { color: #141414; }
+
+/* Work tiles: dark frames, brand-tinted hover */
+.frame { background: var(--paper-2); }
+.tile .frame, .slide .frame { outline: 1px solid var(--rule); outline-offset: -1px; transition: outline-color .3s; }
+.tile:hover .frame, .slide:hover .frame { outline-color: var(--orange); }
+.tile:hover h3, .slide:hover h3 { color: #fff; }
+.tile-cta { background: var(--grad); color: #fff; position: relative; overflow: hidden; }
+.tile-cta::after { content: ""; position: absolute; right: -18%; bottom: -30%; width: 70%; aspect-ratio: 1; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cg fill='none' stroke='%23fff' stroke-width='6' opacity='.22'%3E%3Cellipse cx='50' cy='50' rx='46' ry='24' transform='rotate(45 50 50)'/%3E%3Cellipse cx='50' cy='50' rx='46' ry='24' transform='rotate(-45 50 50)'/%3E%3C/g%3E%3C/svg%3E") center / contain no-repeat; pointer-events: none; }
+.tile-cta strong i { color: #141414; }
+.tile-cta:hover { background: var(--red); }
+.show-all { border-color: var(--rule); }
+.show-all:hover { background: #fff; color: #141414; border-color: #fff; }
+.car-dots button { background: var(--rule); }
+.index:hover .row { color: rgba(244,241,236,.3); }
+.index .row:hover { color: #fff; }
+
+/* Section heads: thin light rule + orange kicker */
+.sec-head { border-top-color: var(--rule); }
+.sub-head { border-color: var(--rule); }
+
+/* Products: keep product shots on white cards (they're cut-outs) */
+.tiles .frame.white { background: #fff; outline: 0; }
+.tiles .tile:hover .frame { box-shadow: 0 0 0 2px var(--orange); }
+
+/* Partners: dark panel, each logo on its own white chip (like the hero's studio tiles) */
+.partners { background: transparent; border-top: 1px solid var(--rule); }
+.pgroup { border-bottom-color: var(--rule); padding-left: 0; padding-right: 0; }
+.pgroup h3 { color: var(--ink); }
+.plogos { gap: 10px; }
+.plogos li { background: #fff; height: 64px; padding: 8px 12px; transition: transform .25s, box-shadow .25s; }
+.plogos li:hover { transform: translateY(-2px); box-shadow: 0 0 0 2px var(--orange); }
+.plogos li:hover img { transform: none; }
+
+/* Case study overlay + mobile menu inherit the dark tokens */
+.case, .case-bar { background: var(--paper); }
+.case-media img, .case-media video { background: var(--paper-2); }
+.checks input:checked + span { background: #fff; color: #141414; border-color: #fff; }
+
+/* Section spacing now that every section is dark: separate with rules, not colour */
+.sec.dark { margin-top: 0; }
+.cta-band { margin-top: var(--sec); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+
+@media (max-width: 760px) {
+  .plogos { gap: 6px; }
+  .plogos li { height: 48px; padding: 6px 8px; }
+}
+
 @media (hover: none) { .hover-img { display: none; } }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
