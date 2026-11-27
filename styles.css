@@ -994,3 +994,82 @@ body.lock .float-cta { opacity: 0; pointer-events: none; }
   .float-cta { left: 16px; right: 16px; bottom: 14px; justify-content: center; padding: 15px 20px; }
 }
 @media (prefers-reduced-motion: reduce) { .float-cta { transition: none; } }
+
+/* ==========================================================================
+   Round 13: Services as expanding "trailer" panels
+   One panel open at a time (campaign image, hook, tags, link to the case);
+   the rest are slim strips with vertical titles. Auto-advances with a progress bar.
+   ========================================================================== */
+.svx { display: flex; gap: 10px; height: clamp(480px, 44vw, 620px); }
+.svx-p { position: relative; flex: 0 0 clamp(76px, 7.4vw, 116px); min-width: 0; overflow: hidden; background: #0b0b0c; color: #fff; cursor: pointer;
+  transition: flex .75s cubic-bezier(.2,.7,.2,1); }
+.svx-p.is-on { flex: 1 1 0; cursor: default; }
+.svx-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: grayscale(.7) brightness(.42); transform: scale(1.12);
+  transition: filter .6s, transform 9s cubic-bezier(.2,.7,.2,1); }
+.svx-p.is-on .svx-img { filter: none; transform: scale(1); }
+.svx-p:not(.is-on):hover .svx-img { filter: grayscale(0) brightness(.62); }
+.svx-p::after { content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background: linear-gradient(to top, rgba(8,8,9,.94) 0%, rgba(8,8,9,.55) 42%, rgba(8,8,9,.12) 75%, rgba(8,8,9,.35) 100%); }
+.svx-p:not(.is-on)::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 3px; z-index: 3; background: var(--grad); transform: scaleX(0); transform-origin: left; transition: transform .35s; }
+.svx-p:not(.is-on):hover::before { transform: scaleX(1); }
+
+/* Tab: vertical strip when closed, title bar when open */
+.svx-tab { position: absolute; inset: 0; z-index: 2; display: flex; flex-direction: column; align-items: center; justify-content: space-between; gap: 16px;
+  padding: 22px 0 26px; color: #fff; font: inherit; text-align: left; cursor: pointer; }
+.svx-n { color: var(--orange); font-weight: 700; }
+.svx-t { writing-mode: vertical-rl; transform: rotate(180deg); white-space: nowrap; font: 800 clamp(22px, 2vw, 30px)/1 var(--display); font-variation-settings: "wdth" 72; text-transform: uppercase; letter-spacing: .01em; }
+.svx-p.is-on .svx-tab { inset: 0 0 auto 0; flex-direction: column; align-items: flex-start; justify-content: flex-start; gap: 10px; padding: clamp(22px, 2.6vw, 36px) clamp(22px, 2.6vw, 40px) 0; cursor: default; }
+.svx-p.is-on .svx-t { writing-mode: horizontal-tb; transform: none; font-size: clamp(36px, 4vw, 64px); line-height: .92; white-space: normal; max-width: 14ch;
+  animation: svxIn .55s .15s both cubic-bezier(.2,.7,.2,1); }
+
+/* Body */
+.svx-body { position: absolute; z-index: 2; left: clamp(22px, 2.6vw, 40px); bottom: clamp(24px, 2.8vw, 40px); width: min(540px, calc(100% - 2 * clamp(22px, 2.6vw, 40px)));
+  display: grid; gap: 14px; opacity: 0; visibility: hidden; transform: translateY(18px); transition: opacity .3s, transform .4s, visibility 0s .3s; }
+.svx-p.is-on .svx-body { opacity: 1; visibility: visible; transform: none; transition: opacity .5s .35s, transform .6s .35s cubic-bezier(.2,.7,.2,1), visibility 0s; }
+.svx-hook { margin: 0; font: 600 clamp(22px, 2.1vw, 32px)/1.2 var(--sans); letter-spacing: -.01em; }
+.svx-txt { margin: 0; font-size: 16px; line-height: 1.55; color: rgba(255,255,255,.82); max-width: 46ch; }
+.svx-chips { list-style: none; margin: 2px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+.svx-chips li { padding: 6px 10px; border: 1px solid rgba(255,255,255,.28); background: rgba(255,255,255,.06); backdrop-filter: blur(4px); font-size: 11px; }
+.svx-ex { display: inline-grid; gap: 4px; justify-self: start; margin-top: 6px; color: #fff; text-decoration: none; }
+.svx-ex .mono { color: var(--orange); font-weight: 700; }
+.svx-ex strong { font-weight: 600; font-size: 17px; border-bottom: 2px solid transparent; border-image: var(--grad) 1; padding-bottom: 2px; }
+.svx-ex:hover strong { color: var(--orange); }
+
+/* Progress bar on the open panel */
+.svx-bar { position: absolute; left: 0; right: 0; bottom: 0; height: 4px; z-index: 3; background: var(--grad); transform: scaleX(0); transform-origin: left; }
+.svx-p.is-on .svx-bar { animation: svxBar 6.5s linear forwards; }
+.svx.paused .svx-p.is-on .svx-bar { animation: none; transform: scaleX(1); }
+@keyframes svxBar { to { transform: scaleX(1); } }
+@keyframes svxIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+
+/* Thai / Chinese: no vertical rotation of the script, keep it readable */
+html[data-lang="th"] .svx-p:not(.is-on) .svx-t, html[data-lang="zh"] .svx-p:not(.is-on) .svx-t { font-size: 20px; }
+html[data-lang="th"] .svx-p.is-on .svx-t, html[data-lang="zh"] .svx-p.is-on .svx-t { line-height: 1.15; max-width: 18ch; }
+
+/* Phones: stacked cards, tap to open */
+@media (max-width: 760px) {
+  .svx { flex-direction: column; height: auto; gap: 8px; }
+  .svx-p { flex: none; height: 78px; transition: height .6s cubic-bezier(.2,.7,.2,1); }
+  .svx-p.is-on { flex: none; height: 500px; }
+  .svx-tab { flex-direction: row; justify-content: flex-start; align-items: center; gap: 14px; padding: 0 18px; }
+  .svx-t { writing-mode: horizontal-tb; transform: none; font-size: 24px; }
+  .svx-p.is-on .svx-tab { padding: 20px 18px 0; }
+  .svx-p.is-on .svx-t { font-size: 34px; }
+  .svx-body { left: 18px; bottom: 22px; width: calc(100% - 36px); gap: 12px; }
+  .svx-hook { font-size: 21px; }
+  .svx-txt { font-size: 15px; }
+  .svx-img { transform: scale(1.04); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .svx-p, .svx-img, .svx-body { transition: none !important; }
+  .svx-p.is-on .svx-bar { animation: none; transform: scaleX(1); }
+}
+/* Stronger shade so titles and copy always read over bright campaign art */
+.svx-p::after { background:
+  linear-gradient(to bottom, rgba(8,8,9,.78) 0%, rgba(8,8,9,.25) 32%, rgba(8,8,9,0) 45%),
+  linear-gradient(to top, rgba(8,8,9,.96) 0%, rgba(8,8,9,.72) 40%, rgba(8,8,9,.15) 72%); }
+.svx-p.is-on .svx-img { filter: brightness(.88) saturate(1.05); }
+@media (max-width: 760px) {
+  .svx-p::after { background: linear-gradient(to bottom, rgba(8,8,9,.8) 0%, rgba(8,8,9,.55) 30%, rgba(8,8,9,.78) 55%, rgba(8,8,9,.95) 100%); }
+  .svx-p.is-on .svx-img { filter: brightness(.75); }
+}

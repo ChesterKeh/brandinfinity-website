@@ -211,19 +211,34 @@
     $("#quotes").hidden = false;
   }
 
-  /* ---------- 04 Services accordion ---------- */
-  // Each service shows a matching campaign still beside the list (like flipping through posters)
-  const svcItems = $$("#svc > li");
-  const svcShow = (k) => {
-    $$(".svc-media img").forEach((im) => im.classList.toggle("is-on", +im.dataset.for === k));
-    const cap = $("#svcCap"); if (cap) cap.textContent = svcItems[k].dataset.cap || "";
+  /* ---------- 04 Services: expanding panels that play like a trailer ---------- */
+  const svx = $("#svx"), panels = $$(".svx-p", svx);
+  let sk = 0, svxTimer, svxHover = false, svxInView = false, hoverDelay;
+  const SVX_MS = 6500;
+  const svxShow = (k, user) => {
+    sk = (k + panels.length) % panels.length;
+    panels.forEach((p, j) => {
+      const on = j === sk; p.classList.toggle("is-on", on);
+      $(".svx-tab", p).setAttribute("aria-expanded", on);
+      const bar = $(".svx-bar", p); bar.style.animation = "none"; void bar.offsetWidth; bar.style.animation = "";
+    });
+    svx.classList.toggle("paused", !!user || svxHover || reduced || !svxInView);
+    clearTimeout(svxTimer);
+    if (!reduced && !svxHover && svxInView) svxTimer = setTimeout(() => svxShow(sk + 1), user ? SVX_MS * 2 : SVX_MS);
   };
-  svcItems.forEach((li, k) => li.addEventListener("mouseenter", () => svcShow(k)));
-  $$(".svc-row").forEach((btn, k) => btn.addEventListener("click", () => {
-    const open = btn.getAttribute("aria-expanded") !== "true";
-    btn.setAttribute("aria-expanded", open); btn.nextElementSibling.hidden = !open;
-    if (open) svcShow(k);
-  }));
+  panels.forEach((p, k) => {
+    $(".svx-tab", p).addEventListener("click", () => svxShow(k, true));
+    p.addEventListener("mouseenter", () => { if (!fine) return; clearTimeout(hoverDelay); hoverDelay = setTimeout(() => { if (sk !== k) svxShow(k, true); }, 120); });
+    p.addEventListener("mouseleave", () => clearTimeout(hoverDelay));
+  });
+  svx.addEventListener("mouseenter", () => { if (!fine) return; svxHover = true; svx.classList.add("paused"); clearTimeout(svxTimer); });
+  svx.addEventListener("mouseleave", () => { if (!fine) return; svxHover = false; svxShow(sk); });
+  if ("IntersectionObserver" in window) new IntersectionObserver(([en]) => {
+    const was = svxInView; svxInView = en.isIntersecting;
+    if (svxInView && !was) svxShow(sk);
+    if (!svxInView) { clearTimeout(svxTimer); svx.classList.add("paused"); }
+  }, { threshold: 0.35 }).observe(svx);
+  svx.classList.add("paused");
 
   /* ---------- Case study page ---------- */
   const box = $("#case"), inner = $("#caseInner");
