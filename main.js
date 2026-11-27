@@ -336,7 +336,12 @@
       btn.disabled = false;
       return;
     }
-    location.href = `mailto:connect@brandinfinity.sg?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines + "\n\n" + d.get("message"))}`;
+    const mail = `mailto:connect@brandinfinity.sg?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines + "\n\n" + d.get("message"))}`;
+    if (window.top !== window.self) {
+      // Shown inside Wix (or any embed): hand the email link to the top window so the mail app opens
+      const ml = document.createElement("a"); ml.href = mail; ml.target = "_top"; ml.rel = "noopener";
+      document.body.appendChild(ml); ml.click(); ml.remove();
+    } else location.href = mail;
     setNote("Your email app should open now. If not, write to connect@brandinfinity.sg.");
   });
 

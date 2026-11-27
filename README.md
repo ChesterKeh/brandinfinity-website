@@ -82,3 +82,8 @@ The four services are expanding panels in `index.html` (search for `class="svx"`
 ## After editing CSS or JS
 
 Browsers keep `styles.css` and the `.js` files for up to 10 minutes. When you change them, bump the `?v=` number on their links at the bottom and top of `index.html` (e.g. `styles.css?v=14` → `?v=15`) so visitors get the new files together with the new page.
+
+## Hosting and Wix
+
+- **Upload package for any host:** `python3 tools/make-deploy.py https://www.brandinfinity.sg/` writes `../brandinfinity-site-deploy.zip` (site files only, link previews pointed at the final address, cache headers). Drag the unzipped folder into https://app.netlify.com/drop or Cloudflare Pages.
+- **Wix:** `wix/wix-custom-code.html` shows the site full-screen on the existing Wix site. Step-by-step instructions are in `wix/WIX-SETUP.md`. Switch the snippet off to go back to the old Wix site.

@@ -1,0 +1,24 @@
+<!--
+  Brand Infinity: show the new site full-screen on the Wix site.
+  Paste into Wix: Settings → Custom Code → + Add Custom Code
+    Name: New Brand Infinity site
+    Add Code to Pages: All pages (load code once)
+    Place Code in: Body - end
+  To switch back to the old Wix site: turn this snippet off (toggle) and publish.
+
+  SITE_URL below is where the new site's files are hosted. It currently points to the demo on GitHub Pages;
+  change it if the files move (e.g. to Netlify or Cloudflare Pages on a company account).
+-->
+<style>
+  html, body { overflow: hidden !important; height: 100% !important; }
+  #bi-site { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; height: 100dvh; border: 0; margin: 0; z-index: 2147483647; background: #fdf6f0; display: block; }
+</style>
+<iframe id="bi-site" title="Brand Infinity" allow="autoplay; fullscreen; clipboard-write" src="about:blank"></iframe>
+<script>
+  (function () {
+    var SITE_URL = "https://chesterkeh.github.io/brandinfinity-website/";
+    var f = document.getElementById("bi-site");
+    // Carry a #section from the address bar through to the site (e.g. brandinfinity.sg/#contact)
+    f.src = SITE_URL + (location.hash || "");
+  })();
+</script>
