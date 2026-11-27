@@ -289,7 +289,7 @@
     if (t === "dark") root.dataset.theme = "dark"; else delete root.dataset.theme;
     themeBtn.setAttribute("aria-label", t === "dark" ? "Switch to light mode" : "Switch to dark mode");
     themeBtn.setAttribute("aria-pressed", t === "dark");
-    if (metaTheme) metaTheme.content = t === "dark" ? "#0b0b0c" : "#f4f1eb";
+    if (metaTheme) metaTheme.content = t === "dark" ? "#0b0b0c" : "#fdf6f0";
   };
   applyTheme(root.dataset.theme === "dark" ? "dark" : "light");
   themeBtn.addEventListener("click", () => {

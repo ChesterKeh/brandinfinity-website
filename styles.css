@@ -756,8 +756,8 @@ body { background: var(--paper); color: var(--ink); }
    html[data-theme="dark"] keeps the all-dark version.
    ========================================================================== */
 html:not([data-theme="dark"]) {
-  --paper: #f4f1eb;
-  --paper-2: #e9e4db;
+  --paper: #fdf6f0;
+  --paper-2: #f6e7dc;
   --ink: #161412;
   --ink-2: rgba(22,20,18,.62);
   --rule: rgba(22,20,18,.13);
@@ -782,7 +782,7 @@ html:not([data-theme="dark"]) .btn-ghost-light { background: transparent; color:
 html:not([data-theme="dark"]) .btn-ghost-light:hover { background: #fff; color: #141414; }
 
 /* Header: light glass once past the hero */
-html:not([data-theme="dark"]) .hdr:not(.on-dark) { background: rgba(244,241,235,.88); border-bottom-color: var(--rule); }
+html:not([data-theme="dark"]) .hdr:not(.on-dark) { background: rgba(253,246,240,.88); border-bottom-color: var(--rule); }
 
 /* Filters, toggles, show-all, form chips */
 html:not([data-theme="dark"]) .filters .is-on,
@@ -805,11 +805,11 @@ html:not([data-theme="dark"]) .plogos li:hover { box-shadow: 0 0 0 2px var(--ora
 html:not([data-theme="dark"]) #work { background: radial-gradient(120% 420px at 50% 0, rgba(242,107,29,.10), transparent 70%); }
 html:not([data-theme="dark"]) #partners { background: linear-gradient(to bottom, transparent 55%, rgba(211,18,26,.05)); padding-bottom: var(--sec); }
 html:not([data-theme="dark"]) #partners + .cta-band { margin-top: 0; }
-html:not([data-theme="dark"]) #services { background: linear-gradient(to bottom, var(--paper), var(--paper) 70%, #efe9e0); }
+html:not([data-theme="dark"]) #services { background: linear-gradient(to bottom, var(--paper), var(--paper) 70%, #fbeadf); }
 
 /* Contact poster on light */
 html:not([data-theme="dark"]) .poster-bg img { opacity: .16; filter: saturate(1.1); }
-html:not([data-theme="dark"]) .poster-bg::after { background: linear-gradient(to bottom, var(--paper) 0%, rgba(244,241,235,.7) 40%, var(--paper) 100%); }
+html:not([data-theme="dark"]) .poster-bg::after { background: linear-gradient(to bottom, var(--paper) 0%, rgba(253,246,240,.7) 40%, var(--paper) 100%); }
 html:not([data-theme="dark"]) .cta-band { border: 0; }
 
 /* Theme toggle */
