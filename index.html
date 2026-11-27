@@ -25,7 +25,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=Lexend:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
-  <script>try{if(localStorage.getItem("bi-theme")==="dark")document.documentElement.dataset.theme="dark"}catch(e){}</script>
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -48,10 +47,6 @@
     <a href="#contact" data-i18n="nav.contact">Contact</a>
   </nav>
   <label class="lang"><span class="vh">Language</span><select id="langSel" aria-label="Language"><option value="en">EN</option><option value="th">ไทย</option><option value="zh">中文</option></select></label>
-  <button class="theme-btn" id="themeBtn" type="button" aria-label="Switch to dark mode" aria-pressed="false">
-    <svg class="i-moon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M21 14.5A8.5 8.5 0 0 1 9.5 3a.5.5 0 0 0-.6-.6A10 10 0 1 0 21.6 15.1a.5.5 0 0 0-.6-.6z"/></svg>
-    <svg class="i-sun" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.2M12 19.8V22M2 12h2.2M19.8 12H22M4.9 4.9l1.6 1.6M17.5 17.5l1.6 1.6M4.9 19.1l1.6-1.6M17.5 6.5l1.6-1.6"/></g></svg>
-  </button>
   <a class="hdr-li" href="https://www.linkedin.com/company/brand-infinity/" target="_blank" rel="noopener" aria-label="Brand Infinity on LinkedIn"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg></a>
   <a class="hdr-cta" href="#contact" data-i18n="cta.start">Start a project</a>
   <button class="hdr-menu mono" id="menuBtn" aria-expanded="false" aria-controls="nav">Menu</button>
@@ -71,13 +66,13 @@
 
     <div class="hero-inner">
       <p class="mono hero-eyebrow" data-i18n="hero.eyebrow">Brand × IP partnerships · Asia Pacific</p>
-      <h1 class="hero-title">
-        <span data-i18n="hero.pre">We connect your brand to the leading storytellers across</span>
-        <a href="#work" class="kw is-on" data-key="film" data-i18n="kw.film">Film</a><span data-i18n="hero.c1">,</span>
-        <a href="#work" class="kw" data-key="licensing" data-i18n="kw.licensing">Licensing</a><span data-i18n="hero.c2">,</span>
-        <a href="#work" class="kw" data-key="gaming" data-i18n="kw.gaming">Gaming</a>
-        <span data-i18n="hero.and">and</span> <a href="#work" class="kw" data-key="streaming" data-i18n="kw.streaming">Streaming</a><span data-i18n="hero.post">.</span>
-      </h1>
+      <h1 class="hero-title" data-i18n="hero.h1">We put your brand in the world’s biggest stories.</h1>
+      <p class="hero-kws" aria-label="What we do">
+        <a href="#work" class="kw is-on" data-key="film" data-i18n="kw.film">Film</a><svg class="ring" aria-hidden="true"><use href="#rings"/></svg>
+        <a href="#work" class="kw" data-key="licensing" data-i18n="kw.licensing">Licensing</a><svg class="ring" aria-hidden="true"><use href="#rings"/></svg>
+        <a href="#work" class="kw" data-key="gaming" data-i18n="kw.gaming">Gaming</a><svg class="ring" aria-hidden="true"><use href="#rings"/></svg>
+        <a href="#work" class="kw" data-key="streaming" data-i18n="kw.streaming">Streaming</a>
+      </p>
       <div class="hero-foot">
         <p class="mono hero-now"><span class="dot"></span><span data-i18n="hero.now">Now playing</span> <span id="heroNow">Roborock × The Garfield Movie</span></p>
         <div class="hero-ctas">
@@ -162,6 +157,27 @@
     </div>
   </section>
 
+  <!-- WHY US: widescreen banner, breaks up the showcase -->
+  <section class="scene grain" id="about">
+    <div class="scene-bg" aria-hidden="true"><img src="assets/work/5hour-spiderverse.webp" alt=""></div>
+    <div class="scene-shade" aria-hidden="true"></div>
+    <div class="wrap scene-inner">
+      <p class="mono sec-kicker" data-i18n="why.k">Why work with us</p>
+      <h2 class="scene-title"><span class="t1" data-i18n="why.t1">We specialise in</span> <span data-i18n="why.t2">pop culture.</span></h2>
+      <div class="scene-cols">
+        <p>With deep experience across entertainment, brand marketing and agency leadership, our team forges partnerships across film, gaming, streaming and licensing.</p>
+        <p>Over the past 15 years, we've built regional and global collaborations that connect the world's leading IPs with brands across Asia Pacific, delivering measurable value and ROI for all parties.</p>
+        <p>Culturally diverse and based across Southeast Asia, our team bridges global storytelling with local insight, so every partnership resonates with real audiences and drives talkability.</p>
+      </div>
+      <dl class="credits">
+        <div><dt class="mono" data-i18n="why.exp">Experience</dt><dd data-i18n="why.expv">15+ years</dd></div>
+        <div><dt class="mono" data-i18n="why.partners">Brand partners</dt><dd>40+</dd></div>
+        <div><dt class="mono" data-i18n="why.genres">Genres</dt><dd data-i18n="why.genresv">Film · Gaming · Streaming</dd></div>
+        <div><dt class="mono" data-i18n="why.region">Region</dt><dd data-i18n="why.regionv">Asia Pacific</dd></div>
+      </dl>
+    </div>
+  </section>
+
   <!-- 03 PARTNERS -->
   <section class="sec" id="partners">
     <div class="wrap">
@@ -181,30 +197,6 @@
         <h2 class="sec-title" data-i18n="quotes.t">What partners say</h2>
       </header>
       <div class="quote-list" id="quoteList"></div>
-    </div>
-  </section>
-
-  <!-- CTA BAND -->
-  <section class="cta-band grain">
-    <svg class="cta-rings" aria-hidden="true"><use href="#rings"/></svg>
-    <div class="wrap cta-band-grid">
-      <p class="mono sec-kicker" data-i18n="band.k">Elevate your brand</p>
-      <h2 class="cta-band-title"><span class="t1" data-i18n="band.t1">Got a launch coming up?</span><br><span data-i18n="band.t2">Let's put it in the story.</span></h2>
-      <div class="cta-band-side">
-        <p data-i18n="band.p">Tell us about your brand and timing. We'll come back with the IPs, partnership model and activation ideas that fit.</p>
-        <div class="cta-band-btns">
-          <a class="btn btn-light" href="#contact" data-i18n="cta.start">Start a project</a>
-          <a class="btn btn-ghost-light" href="https://www.linkedin.com/company/brand-infinity/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg> <span data-i18n="cta.follow">Follow on LinkedIn</span></a>
-        </div>
-      </div>
-    </div>
-    <div class="wrap slate">
-      <div class="slate-head">
-        <p class="mono" data-i18n="slate.k">On the slate</p>
-        <p class="slate-note" data-i18n="slate.p">Upcoming releases still open to brand partners. The full list is shared under NDA.</p>
-        <a class="mono slate-link" href="#contact" data-i18n="slate.cta">Ask for the slate →</a>
-      </div>
-      <ul class="slate-list" id="slate"></ul>
     </div>
   </section>
 
@@ -273,24 +265,27 @@
     </div>
   </section>
 
-  <!-- 05 WHY US: widescreen scene -->
-  <section class="scene grain" id="about">
-    <div class="scene-bg" aria-hidden="true"><img src="assets/work/5hour-spiderverse.webp" alt=""></div>
-    <div class="scene-shade" aria-hidden="true"></div>
-    <div class="wrap scene-inner">
-      <p class="mono sec-kicker" data-i18n="why.k">Why work with us</p>
-      <h2 class="scene-title"><span class="t1" data-i18n="why.t1">We specialise in</span> <span data-i18n="why.t2">pop culture.</span></h2>
-      <div class="scene-cols">
-        <p>With deep experience across entertainment, brand marketing and agency leadership, our team forges partnerships across film, gaming, streaming and licensing.</p>
-        <p>Over the past 15 years, we've built regional and global collaborations that connect the world's leading IPs with brands across Asia Pacific, delivering measurable value and ROI for all parties.</p>
-        <p>Culturally diverse and based across Southeast Asia, our team bridges global storytelling with local insight, so every partnership resonates with real audiences and drives talkability.</p>
+  <!-- LAUNCH BAND: leads straight into the contact form -->
+  <section class="cta-band grain">
+    <svg class="cta-rings" aria-hidden="true"><use href="#rings"/></svg>
+    <div class="wrap cta-band-grid">
+      <p class="mono sec-kicker" data-i18n="band.k">Elevate your brand</p>
+      <h2 class="cta-band-title"><span class="t1" data-i18n="band.t1">Got a launch coming up?</span><br><span data-i18n="band.t2">Let's put it in the story.</span></h2>
+      <div class="cta-band-side">
+        <p data-i18n="band.p">Tell us about your brand and timing. We'll come back with the IPs, partnership model and activation ideas that fit.</p>
+        <div class="cta-band-btns">
+          <a class="btn btn-light" href="#contact" data-i18n="cta.start">Start a project</a>
+          <a class="btn btn-ghost-light" href="https://www.linkedin.com/company/brand-infinity/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg> <span data-i18n="cta.follow">Follow on LinkedIn</span></a>
+        </div>
       </div>
-      <dl class="credits">
-        <div><dt class="mono" data-i18n="why.exp">Experience</dt><dd data-i18n="why.expv">15+ years</dd></div>
-        <div><dt class="mono" data-i18n="why.partners">Brand partners</dt><dd>40+</dd></div>
-        <div><dt class="mono" data-i18n="why.genres">Genres</dt><dd data-i18n="why.genresv">Film · Gaming · Streaming</dd></div>
-        <div><dt class="mono" data-i18n="why.region">Region</dt><dd data-i18n="why.regionv">Asia Pacific</dd></div>
-      </dl>
+    </div>
+    <div class="wrap slate">
+      <div class="slate-head">
+        <p class="mono" data-i18n="slate.k">On the slate</p>
+        <p class="slate-note" data-i18n="slate.p">Upcoming releases still open to brand partners. The full list is shared under NDA.</p>
+        <a class="mono slate-link" href="#contact" data-i18n="slate.cta">Ask for the slate →</a>
+      </div>
+      <ul class="slate-list" id="slate"></ul>
     </div>
   </section>
 

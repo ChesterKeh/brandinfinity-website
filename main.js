@@ -367,21 +367,6 @@
     addEventListener("hashchange", () => { if (location.hash.startsWith("#project/") && window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: location.hash.slice(1), title: document.title }); });
   }
 
-  /* ---------- Light / dark toggle (light is the default; choice remembered) ---------- */
-  const root = document.documentElement, themeBtn = $("#themeBtn"), metaTheme = $('meta[name="theme-color"]');
-  const applyTheme = (t) => {
-    if (t === "dark") root.dataset.theme = "dark"; else delete root.dataset.theme;
-    themeBtn.setAttribute("aria-label", t === "dark" ? "Switch to light mode" : "Switch to dark mode");
-    themeBtn.setAttribute("aria-pressed", t === "dark");
-    if (metaTheme) metaTheme.content = t === "dark" ? "#0b0b0c" : "#fdf6f0";
-  };
-  applyTheme(root.dataset.theme === "dark" ? "dark" : "light");
-  themeBtn.addEventListener("click", () => {
-    const next = root.dataset.theme === "dark" ? "light" : "dark";
-    applyTheme(next);
-    try { localStorage.setItem("bi-theme", next); } catch (e) {}
-  });
-
   /* ---------- Language ---------- */
   const langSel = $("#langSel");
   langSel.value = I18N.lang;

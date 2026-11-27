@@ -812,14 +812,6 @@ html:not([data-theme="dark"]) .poster-bg img { opacity: .16; filter: saturate(1.
 html:not([data-theme="dark"]) .poster-bg::after { background: linear-gradient(to bottom, var(--paper) 0%, rgba(253,246,240,.7) 40%, var(--paper) 100%); }
 html:not([data-theme="dark"]) .cta-band { border: 0; }
 
-/* Theme toggle */
-.theme-btn { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 50%; border: 1px solid currentColor; opacity: .85; transition: opacity .2s, color .2s, background .2s; }
-.theme-btn:hover { opacity: 1; color: var(--orange); }
-.theme-btn .i-sun { display: none; }
-html[data-theme="dark"] .theme-btn .i-sun { display: block; }
-html[data-theme="dark"] .theme-btn .i-moon { display: none; }
-@media (max-width: 760px) { .theme-btn { margin-left: auto; } .theme-btn + .hdr-li { margin-left: 0; } }
-
 /* Logo links */
 .plogos a, .trusted a { display: grid; place-items: center; width: 100%; height: 100%; }
 .plogos li { cursor: pointer; }
@@ -940,7 +932,32 @@ html[data-lang="th"] .svc-row .t, html[data-lang="zh"] .svc-row .t { line-height
   .slate-list li { padding: 14px 12px 16px; }
   .steps { grid-template-columns: 1fr; }
 }
-@media (max-width: 760px) { .hdr .lang { margin-left: auto; } .lang + .theme-btn { margin-left: 0; } }
+@media (max-width: 760px) { .hdr .lang { margin-left: auto; } }
 @media (max-width: 760px) { .hdr .hdr-li { display: none; } .logo span { white-space: nowrap; } }
 html[data-lang="th"] .mono, html[data-lang="zh"] .mono { letter-spacing: .03em; }
 html[data-lang="th"] .mono { font-size: 13px; }
+
+/* ==========================================================================
+   Round 10: light only, new hero headline, evenly spaced banners
+   Flow: hero (dark) → work → products → WHY US banner → partners → services
+         → LAUNCH band → contact → footer (dark)
+   ========================================================================== */
+.hero-title { max-width: 19ch; font-size: clamp(44px, 6.6vw, 112px); }
+.hero-kws { display: flex; flex-wrap: wrap; align-items: center; gap: .1em .38em; margin: clamp(14px, 2vw, 24px) 0 0; font-weight: 800; text-transform: uppercase; font-family: var(--display); font-variation-settings: "wdth" 72; font-size: clamp(28px, 3.6vw, 60px); line-height: 1; }
+.hero-kws .kw { color: rgba(255,255,255,.55); }
+.hero-kws .kw.is-on, .hero-kws .kw:hover, .hero-kws .kw:focus-visible { color: #ff3b2f; }
+.hero-kws .ring { width: .5em; height: .5em; color: var(--orange); opacity: .9; flex: none; }
+html[data-lang="th"] .hero-kws, html[data-lang="zh"] .hero-kws { line-height: 1.2; }
+
+/* Why us banner now sits between Products and Partners */
+#products + .scene { margin-top: var(--sec); }
+.scene + #partners { padding-top: var(--sec); }
+#partners { background: none !important; padding-bottom: 0 !important; }
+
+/* Services flows into the launch band, which flows into Contact */
+#services + .cta-band { margin-top: 0; }
+.cta-band + .sec.dark { margin-top: 0; border-top: 0; }
+html:not([data-theme="dark"]) #services { background: linear-gradient(to bottom, var(--paper) 0%, var(--paper) 75%, #f9e3d5 100%); }
+/* A brand-gradient edge on the dark banners (echoes the ticker under the hero) */
+html .scene { border-style: solid; border-width: 0 0 4px; border-image: var(--grad) 1; }
+html .cta-band { border-style: solid !important; border-width: 4px 0 0 !important; border-image: var(--grad) 1 !important; }
