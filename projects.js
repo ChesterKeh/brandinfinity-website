@@ -9,11 +9,23 @@
     video     (opt.)   : path to an mp4, plays in the carousel/grid on hover and in the case study
     cover     (opt.)   : a different image for the grid card
     highlight (opt.)   : true = also shown in the Our Work carousel
+    carouselVideo (opt.): false = show the first image in the carousel instead of the video
     results   (opt.)   : campaign numbers shown in the case study, e.g.
                          results: [{ value: "12M", label: "Video views" }, { value: "6", label: "Markets" }]
                          Leave it out and the case study shows "Results available on request".
 */
 window.PROJECTS = [
+  {
+    brand: "realme", ip: "Spider-Man: Far From Home",
+    highlight: true,   // shown in the Our Work carousel
+    category: "film",
+    summary: "A Spider-Man: Far From Home edition of the realme smartphone, with a custom superhero theme and cinematic launch film.",
+    tags: ["Film tie-in", "Product integration", "Launch film"],
+    images: ["assets/work/realme-spiderman.webp", "assets/video/realme-superhero.webp"],
+    video: "assets/video/realme-superhero.mp4",
+    carouselVideo: false,   // the film opens on a logo card, so the carousel shows the Spider-Man still instead
+    featured: true
+  },
   {
     brand: "Roborock", ip: "The Garfield Movie",
     highlight: true,   // shown in the Our Work carousel
@@ -32,16 +44,6 @@ window.PROJECTS = [
     tags: ["Licensing", "Product creation", "Campaign film"],
     images: ["assets/work/heinemann-monopoly.webp", "assets/work/monopoly-poster.webp"],
     video: "assets/video/heinemann-monopoly.mp4",
-    featured: true
-  },
-  {
-    brand: "realme", ip: "Spider-Man: Far From Home",
-    highlight: true,   // shown in the Our Work carousel
-    category: "film",
-    summary: "A Spider-Man: Far From Home edition of the realme smartphone, with a custom superhero theme and cinematic launch film.",
-    tags: ["Film tie-in", "Product integration", "Launch film"],
-    images: ["assets/work/realme-spiderman.webp", "assets/video/realme-superhero.webp"],
-    video: "assets/video/realme-superhero.mp4",
     featured: true
   },
   {

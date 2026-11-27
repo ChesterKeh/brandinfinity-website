@@ -945,7 +945,6 @@ html[data-lang="th"] .mono { font-size: 13px; }
 
 /* Why us banner now sits between Products and Partners */
 #products + .scene { margin-top: var(--sec); }
-.scene + #partners { padding-top: var(--sec); }
 #partners { background: none !important; padding-bottom: 0 !important; }
 
 /* Services flows straight into the launch band, which flows into Contact */
@@ -961,7 +960,37 @@ html:not([data-theme="dark"]) #services { background: none; }
 .scene::before { display: none; }          /* drop the uneven letterbox bars */
 .scene-bg img { transform: scale(1.06); }
 #products + .scene { margin-top: var(--sec); }
-.scene + #partners { padding-top: var(--sec); }
-#services { padding-bottom: var(--sec) !important; }
 .cta-band + #contact { padding-top: var(--sec); }
 @media (max-width: 760px) { .scene, .cta-band { --bpad: 56px; } }
+
+/* ==========================================================================
+   Round 12: services before partners; one clear call to action
+   ========================================================================== */
+/* Spacing for the new order: why-us banner → services → partners → launch band */
+.scene + #services { margin-top: 0; padding-top: var(--sec); }
+#services { padding-bottom: 0 !important; }
+#services + #partners { padding-top: var(--sec); }
+
+/* Primary CTA: the brand gradient, used only for "Start a project" so it always stands out */
+.btn-primary, .hdr-cta.btn-primary, .hdr.on-dark .hdr-cta.btn-primary,
+html:not([data-theme="dark"]) .btn.btn-primary, html:not([data-theme="dark"]) .hdr-cta.btn-primary, html:not([data-theme="dark"]) .hdr.on-dark .hdr-cta.btn-primary {
+  background: var(--grad); background-size: 140% 100%; background-position: 0 0; color: #fff; border-color: transparent;
+  box-shadow: 0 8px 24px -10px rgba(211,18,26,.55); transition: background-position .4s, box-shadow .3s, transform .2s;
+}
+.btn-primary:hover, .hdr-cta.btn-primary:hover, .hdr.on-dark .hdr-cta.btn-primary:hover,
+html:not([data-theme="dark"]) .btn.btn-primary:hover, html:not([data-theme="dark"]) .hdr-cta.btn-primary:hover, html:not([data-theme="dark"]) .hdr.on-dark .hdr-cta.btn-primary:hover {
+  background: var(--grad); background-size: 140% 100%; background-position: 100% 0; color: #fff; box-shadow: 0 10px 28px -8px rgba(211,18,26,.7); transform: translateY(-1px);
+}
+.btn-primary::after { content: " →"; white-space: pre; }
+.hdr-cta.btn-primary::after, .form .btn-primary::after { content: none; }
+
+/* Floating CTA */
+.float-cta { position: fixed; right: clamp(16px, 2.4vw, 32px); bottom: clamp(16px, 2.4vw, 32px); z-index: 45; display: inline-flex; align-items: center; gap: 8px; padding: 14px 22px; border-radius: 999px; text-decoration: none; font: 600 15px/1 var(--sans);
+  opacity: 0; transform: translateY(16px) scale(.96); pointer-events: none; transition: opacity .3s, transform .3s, background-position .4s, box-shadow .3s; }
+.float-cta.on { opacity: 1; transform: none; pointer-events: auto; }
+.float-cta.btn-primary::after { content: none; }
+body.lock .float-cta { opacity: 0; pointer-events: none; }
+@media (max-width: 760px) {
+  .float-cta { left: 16px; right: 16px; bottom: 14px; justify-content: center; padding: 15px 20px; }
+}
+@media (prefers-reduced-motion: reduce) { .float-cta { transition: none; } }

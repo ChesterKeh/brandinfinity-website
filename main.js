@@ -59,9 +59,11 @@
   const track = $("#carTrack");
   track.innerHTML = list.map(([p, i], k) => `
     <a class="slide" href="#project/${slug(p)}" data-k="${k}" aria-label="${esc(p.brand)} × ${esc(p.ip)}">
-      ${p.video
+      ${p.video && p.carouselVideo !== false
         ? `<span class="frame"><video src="${esc(p.video)}" poster="${esc(p.images.find((s) => s.startsWith("assets/video/")) || p.images[0])}" muted loop playsinline preload="none"></video></span>`
-        : frame(p.images[0], "", k > 1 ? 'loading="lazy"' : "")}
+        : p.carouselVideo === false
+          ? `<span class="frame fit" data-fit="1"><img src="${esc(p.images[0])}" alt="" style="object-position:50% 42%"></span>`
+          : frame(p.images[0], "", k > 1 ? 'loading="lazy"' : "")}
       <span class="slide-cap"><h3>${title(p)}</h3><span class="mono">${pad(i)} · ${esc(CAT[p.category] || p.category)}</span></span>
     </a>`).join("");
   const slides = $$(".slide", track);
@@ -366,6 +368,21 @@
     // Count case-study views as their own pages
     addEventListener("hashchange", () => { if (location.hash.startsWith("#project/") && window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: location.hash.slice(1), title: document.title }); });
   }
+
+  /* ---------- Floating "Start a project": after the hero, hidden at the contact form ---------- */
+  const fcta = $("#floatCta");
+  let contactInView = false;
+  const fctaUpdate = () => {
+    const on = scrollY > hero.offsetHeight * 0.8 && !contactInView && box.hidden && reel.hidden;
+    fcta.classList.toggle("on", on);
+    fcta.setAttribute("aria-hidden", !on); fcta.tabIndex = on ? 0 : -1;
+  };
+  if ("IntersectionObserver" in window) new IntersectionObserver(([e]) => { contactInView = e.isIntersecting; fctaUpdate(); }, { rootMargin: "0px 0px -30% 0px" }).observe($("#contact"));
+  addEventListener("scroll", fctaUpdate, { passive: true });
+  new MutationObserver(fctaUpdate).observe(box, { attributes: true, attributeFilter: ["hidden"] });
+  new MutationObserver(fctaUpdate).observe(reel, { attributes: true, attributeFilter: ["hidden"] });
+  fcta.addEventListener("click", () => { if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: "float-cta", title: "Floating CTA", event: true }); });
+  fctaUpdate();
 
   /* ---------- Language ---------- */
   const langSel = $("#langSel");
