@@ -1094,3 +1094,19 @@ html[data-lang="zh"] .svx-p:not(.is-on) .svx-t, html[data-lang="ja"] .svx-p:not(
 /* Sturdier than vertical writing-mode (depends on font support): one upright character per line */
 html[data-lang="zh"] .svx-p:not(.is-on) .svx-t, html[data-lang="ja"] .svx-p:not(.is-on) .svx-t, html[data-lang="ko"] .svx-p:not(.is-on) .svx-t {
   writing-mode: horizontal-tb; transform: none; width: 1.05em; white-space: normal; word-break: break-all; line-height: 1.12; text-align: center; letter-spacing: 0; }
+
+/* Round 19: polish from review */
+/* Hero: extra shade behind the headline column so the type never fights the footage */
+.hero-shade { background:
+  linear-gradient(90deg, rgba(10,10,12,.78) 0%, rgba(10,10,12,.45) 45%, rgba(10,10,12,0) 75%),
+  linear-gradient(to top, rgba(10,10,12,.94) 0%, rgba(10,10,12,.62) 40%, rgba(10,10,12,.42) 100%) !important; }
+@media (max-width: 760px) { .hero-shade { background: linear-gradient(to top, rgba(10,10,12,.95) 0%, rgba(10,10,12,.72) 45%, rgba(10,10,12,.6) 100%) !important; } }
+.show-all [hidden] { display: none !important; }
+
+/* Email + copy button */
+.mail-row { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; }
+.copy-mail { padding: 8px 14px; border: 1px solid var(--ink); border-radius: 999px; font: 600 13px/1 var(--sans); color: var(--ink); background: transparent; cursor: pointer; transition: background .2s, color .2s, border-color .2s; }
+.copy-mail:hover { background: var(--ink); color: #fff; }
+.copy-mail.done { background: var(--red); border-color: var(--red); color: #fff; }
+.form textarea::placeholder { color: var(--ink-2); opacity: .7; }
+html:not([data-theme="dark"]) .poster-bg img { opacity: .12 !important; filter: blur(3px) saturate(1.1) !important; }

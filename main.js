@@ -64,7 +64,7 @@
         : p.carouselVideo === false
           ? `<span class="frame fit" data-fit="1"><img src="${esc(p.images[0])}" alt="" style="object-position:50% 42%"></span>`
           : frame(p.images[0], "", k > 1 ? 'loading="lazy"' : "")}
-      <span class="slide-cap"><h3>${title(p)}</h3><span class="mono">${pad(i)} · ${esc(CAT[p.category] || p.category)}</span></span>
+      <span class="slide-cap"><h3>${title(p)}</h3><span class="mono" data-i18n="kw.${esc(p.category)}">${esc(CAT[p.category] || p.category)}</span></span>
     </a>`).join("");
   const slides = $$(".slide", track);
   $("#carDots").innerHTML = slides.map((_, k) => `<button role="tab" aria-label="Project ${k + 1}" aria-selected="${k === 0}" data-k="${k}"></button>`).join("");
@@ -403,6 +403,25 @@
   new MutationObserver(fctaUpdate).observe(reel, { attributes: true, attributeFilter: ["hidden"] });
   fcta.addEventListener("click", () => { if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: "float-cta", title: "Floating CTA", event: true }); });
   fctaUpdate();
+
+  /* ---------- IP marquee: the seamless-scroll copy is made here, so the page lists each IP once ---------- */
+  const run = $(".ticker-run");
+  if (run && !reduced) { const clone = run.cloneNode(true); clone.setAttribute("aria-hidden", "true"); run.after(clone); }
+
+  /* ---------- "Show all" / "Show fewer": only the current action is in the page ---------- */
+  const showAll = $("#showAll"), moreT = $(".more-t"), lessT = $(".less-t");
+  const syncShowAll = () => { moreT.hidden = showAll.checked; lessT.hidden = !showAll.checked; };
+  showAll.addEventListener("change", syncShowAll); syncShowAll();
+
+  /* ---------- Copy email ---------- */
+  const copyBtn = $("#copyMail");
+  copyBtn.addEventListener("click", async () => {
+    const addr = "connect@brandinfinity.sg";
+    try { await navigator.clipboard.writeText(addr); }
+    catch (e) { const t = document.createElement("textarea"); t.value = addr; document.body.appendChild(t); t.select(); try { document.execCommand("copy"); } catch (e2) {} t.remove(); }
+    copyBtn.dataset.i18n = "Copied"; copyBtn.textContent = T("Copied"); copyBtn.classList.add("done");
+    setTimeout(() => { copyBtn.dataset.i18n = "Copy"; copyBtn.textContent = T("Copy"); copyBtn.classList.remove("done"); }, 2000);
+  });
 
   /* ---------- Language ---------- */
   const langSel = $("#langSel");
