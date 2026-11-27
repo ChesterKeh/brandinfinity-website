@@ -1073,3 +1073,24 @@ html[data-lang="th"] .svx-p.is-on .svx-t, html[data-lang="zh"] .svx-p.is-on .svx
   .svx-p::after { background: linear-gradient(to bottom, rgba(8,8,9,.8) 0%, rgba(8,8,9,.55) 30%, rgba(8,8,9,.78) 55%, rgba(8,8,9,.95) 100%); }
   .svx-p.is-on .svx-img { filter: brightness(.75); }
 }
+
+/* Round 15: Korean + Japanese */
+html[data-lang="ko"] { --sans: "Lexend", "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans KR", sans-serif; --display: "Archivo", "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans KR", sans-serif; }
+html[data-lang="ja"] { --sans: "Lexend", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", "Noto Sans JP", sans-serif; --display: "Archivo", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", "Noto Sans JP", sans-serif; }
+html[data-lang="ko"] .hero-title, html[data-lang="ja"] .hero-title { line-height: 1.12; letter-spacing: 0; }
+html[data-lang="ko"] .sec-title, html[data-lang="ja"] .sec-title,
+html[data-lang="ko"] .cta-band-title, html[data-lang="ja"] .cta-band-title,
+html[data-lang="ko"] .scene-title, html[data-lang="ja"] .scene-title { line-height: 1.15; }
+html[data-lang="ko"] .mono, html[data-lang="ja"] .mono { letter-spacing: .03em; }
+html[data-lang="ko"] .svx-p:not(.is-on) .svx-t, html[data-lang="ja"] .svx-p:not(.is-on) .svx-t { font-size: 20px; }
+html[data-lang="ko"] .svx-p.is-on .svx-t, html[data-lang="ja"] .svx-p.is-on .svx-t { line-height: 1.15; max-width: 18ch; }
+html[data-lang="ko"] .hero-title { word-break: keep-all; }
+html[data-lang="ko"] .sec-title, html[data-lang="ko"] .cta-band-title, html[data-lang="ko"] .svx-hook { word-break: keep-all; }
+/* CJK vertical strips: characters stay upright and read top to bottom (no 180° flip) */
+html[data-lang="zh"] .svx-p:not(.is-on) .svx-t, html[data-lang="ja"] .svx-p:not(.is-on) .svx-t, html[data-lang="ko"] .svx-p:not(.is-on) .svx-t { transform: none; text-orientation: upright; letter-spacing: .04em; }
+@media (max-width: 760px) {
+  html[data-lang="zh"] .svx-p:not(.is-on) .svx-t, html[data-lang="ja"] .svx-p:not(.is-on) .svx-t, html[data-lang="ko"] .svx-p:not(.is-on) .svx-t { writing-mode: horizontal-tb; }
+}
+/* Sturdier than vertical writing-mode (depends on font support): one upright character per line */
+html[data-lang="zh"] .svx-p:not(.is-on) .svx-t, html[data-lang="ja"] .svx-p:not(.is-on) .svx-t, html[data-lang="ko"] .svx-p:not(.is-on) .svx-t {
+  writing-mode: horizontal-tb; transform: none; width: 1.05em; white-space: normal; word-break: break-all; line-height: 1.12; text-align: center; letter-spacing: 0; }

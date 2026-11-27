@@ -59,7 +59,7 @@ Each partner logo opens that brand's website in a new tab. The addresses are in 
 - **Testimonials**: add quotes to `window.TESTIMONIALS` in `projects.js`. The section stays hidden while the list is empty.
 - **Contact form**: by default it opens the visitor's email app. To have enquiries arrive straight in the inbox, create a free form at formspree.io (set the notification email to connect@brandinfinity.sg) and paste its URL into `SITE.formEndpoint` in `projects.js`.
 - **Visit stats**: sign up at goatcounter.com, then put your code (the `xxx` in `xxx.goatcounter.com`) into `SITE.goatcounter`. Off until set. Showreel opens and sent enquiries are counted as events.
-- **Languages**: EN / ไทย / 中文 picker in the header, remembered per visitor. Translations live in `i18n.js`; anything not translated falls back to English. Long paragraphs (service descriptions, Why us, project summaries) are English only for now. Have a native speaker review before using with clients.
+- **Languages**: EN / ไทย / 中文 / 한국어 / 日本語 picker in the header, remembered per visitor. Translations live in `i18n.js`; anything not translated falls back to English. Long paragraphs (service descriptions, Why us, project summaries) are English only for now. Have a native speaker review before using with clients.
 - **Credentials PDF**: `assets/brand-infinity-credentials.pdf`, linked in Contact and the footer.
 - **Link preview**: `assets/og.jpg` is the image shown when the link is shared on WhatsApp, LinkedIn, Slack etc.
 
