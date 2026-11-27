@@ -64,7 +64,7 @@
         : p.carouselVideo === false
           ? `<span class="frame fit" data-fit="1"><img src="${esc(p.images[0])}" alt="" style="object-position:50% 42%"></span>`
           : frame(p.images[0], "", k > 1 ? 'loading="lazy"' : "")}
-      <span class="slide-cap"><h3>${title(p)}</h3><span class="mono">${pad(i)} · ${esc(CAT[p.category] || p.category)}</span></span>
+      <span class="slide-cap"><h3>${title(p)}</h3><span class="mono" data-i18n="kw.${esc(p.category)}">${esc(CAT[p.category] || p.category)}</span></span>
     </a>`).join("");
   const slides = $$(".slide", track);
   $("#carDots").innerHTML = slides.map((_, k) => `<button role="tab" aria-label="Project ${k + 1}" aria-selected="${k === 0}" data-k="${k}"></button>`).join("");
@@ -105,9 +105,8 @@
   grid.innerHTML = P.map((p, i) => `
     <a class="tile" href="#project/${slug(p)}" data-cat="${esc(p.category)}">
       ${frame(p.cover || p.images[0], "", 'loading="lazy"')}
-      <span class="tile-cap"><span class="mono n">${pad(i)}</span><h3>${title(p)}</h3><span class="mono d">${esc(CAT[p.category] || p.category)}</span></span>
-    </a>`).join("") + `
-    <a class="tile-cta" href="#contact"><span class="mono" data-i18n="Next project">Next project</span><strong><span data-i18n="Your brand">Your brand</span> <i>×</i> <span data-i18n="the next big IP">the next big IP</span></strong><span class="mono" data-i18n="Start a project →">Start a project →</span></a>`;
+      <span class="tile-cap"><h3>${title(p)}</h3><span class="mono d" data-i18n="kw.${esc(p.category)}">${esc(CAT[p.category] || p.category)}</span></span>
+    </a>`).join("");
 
   const listEl = $("#indexList");
   listEl.innerHTML = P.map((p, i) => `
@@ -129,13 +128,12 @@
     const n = c === "all" ? P.length : P.filter((p) => p.category === c).length;
     return `<button data-f="${c}" aria-pressed="false"><span data-i18n="${c === "all" ? "All" : "kw." + c}">${c === "all" ? "All" : CAT[c] || c}</span><sup>${n}</sup></button>`;
   }).join("");
-  // Collapsed by default: first 5 projects + the CTA tile; "Show all" reveals the rest (works without JS too)
-  $$(".tile[data-cat]", grid).forEach((t, k) => t.classList.toggle("more", k >= 5));
+  // Collapsed by default: first 6 projects; "Show all" reveals the rest (works without JS too)
+  $$(".tile[data-cat]", grid).forEach((t, k) => t.classList.toggle("more", k >= 6));
   $("#allCount").textContent = P.length;
   const setFilter = (f) => {
     $$("#filters button").forEach((x) => { const on = x.dataset.f === f; x.classList.toggle("is-on", on); x.setAttribute("aria-pressed", on); });
     $$(".tile[data-cat], .row").forEach((el) => el.classList.toggle("hide", f !== "all" && el.dataset.cat !== f));
-    $(".tile-cta").hidden = f !== "all";
     grid.classList.toggle("filtered", f !== "all");
     $("#showAllBtn").hidden = f !== "all";
   };
