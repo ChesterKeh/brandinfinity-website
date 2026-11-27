@@ -9,6 +9,9 @@
     video     (opt.)   : path to an mp4, plays in the carousel/grid on hover and in the case study
     cover     (opt.)   : a different image for the grid card
     highlight (opt.)   : true = also shown in the Our Work carousel
+    results   (opt.)   : campaign numbers shown in the case study, e.g.
+                         results: [{ value: "12M", label: "Video views" }, { value: "6", label: "Markets" }]
+                         Leave it out and the case study shows "Results available on request".
 */
 window.PROJECTS = [
   {
@@ -199,3 +202,31 @@ window.PARTNER_LINKS = {
   "lux": "https://www.lux.com/",
   "gillette": "https://gillette.com/"
 };
+
+/*
+  SITE — switches for features that need an account. Leave a value empty to keep it off.
+    formEndpoint : a Formspree form URL (https://formspree.io/f/xxxxxxx). When set, the contact form
+                   sends straight to the inbox; when empty, it opens the visitor's email app instead.
+    goatcounter  : your GoatCounter code (the "xxx" in xxx.goatcounter.com) for privacy-friendly visit stats.
+*/
+window.SITE = {
+  formEndpoint: "",
+  goatcounter: ""
+};
+
+/*
+  TESTIMONIALS — quotes from partner brands. The section stays hidden until at least one is added.
+  { quote: "…", name: "Jane Tan", role: "Marketing Director", company: "Brand" }
+*/
+window.TESTIMONIALS = [];
+
+/*
+  SLATE — the "On the slate" cards in the launch band: kinds of upcoming releases brands can still join.
+  Keep titles generic on a public site; the real list is shared under NDA.
+*/
+window.SLATE = [
+  { when: "2027", kind: "Tentpole film", note: "Superhero & animated summer releases" },
+  { when: "2027", kind: "Game launch", note: "AAA & mobile titles with in-game integration" },
+  { when: "Ongoing", kind: "Streaming series", note: "Returning seasons on global platforms" },
+  { when: "Ongoing", kind: "Classic brands", note: "Toys, games & characters for licensing" }
+];

@@ -5,9 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Brand Infinity — Brand partnerships with entertainment IP</title>
   <meta name="description" content="Brand Infinity connects brands with the world's leading storytellers across film, licensing, gaming and streaming. An IP partnership agency for Asia Pacific, based in Singapore.">
-  <meta property="og:title" content="Brand Infinity">
-  <meta property="og:description" content="Brand partnerships with global entertainment IP across film, gaming, streaming and licensing in Asia Pacific.">
-  <meta property="og:image" content="assets/video/roborock-garfield.webp">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Brand Infinity">
+  <meta property="og:url" content="https://chesterkeh.github.io/brandinfinity-website/">
+  <meta property="og:title" content="Brand Infinity: Brand × entertainment IP partnerships">
+  <meta property="og:description" content="We connect brands with the world's leading storytellers across film, licensing, gaming and streaming in Asia Pacific.">
+  <meta property="og:image" content="https://chesterkeh.github.io/brandinfinity-website/assets/og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Brand Infinity: brand partnerships with film, gaming, streaming and licensing IP">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Brand Infinity: Brand × entertainment IP partnerships">
+  <meta name="twitter:description" content="We connect brands with the world's leading storytellers across film, licensing, gaming and streaming in Asia Pacific.">
+  <meta name="twitter:image" content="https://chesterkeh.github.io/brandinfinity-website/assets/og.jpg">
+  <link rel="canonical" href="https://chesterkeh.github.io/brandinfinity-website/">
   <meta name="theme-color" content="#fdf6f0">
   <link rel="icon" href="assets/mark.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -29,19 +40,20 @@
     <img src="assets/mark.png" alt="" width="26" height="25"><span>Brand Infinity</span>
   </a>
   <nav class="hdr-nav" id="nav" aria-label="Main">
-    <a href="#work">Work</a>
-    <a href="#products">Products</a>
-    <a href="#partners">Partners</a>
-    <a href="#services">Services</a>
-    <a href="#about">Why us</a>
-    <a href="#contact">Contact</a>
+    <a href="#work" data-i18n="nav.work">Work</a>
+    <a href="#products" data-i18n="nav.products">Products</a>
+    <a href="#partners" data-i18n="nav.partners">Partners</a>
+    <a href="#services" data-i18n="nav.services">Services</a>
+    <a href="#about" data-i18n="nav.about">Why us</a>
+    <a href="#contact" data-i18n="nav.contact">Contact</a>
   </nav>
+  <label class="lang"><span class="vh">Language</span><select id="langSel" aria-label="Language"><option value="en">EN</option><option value="th">ไทย</option><option value="zh">中文</option></select></label>
   <button class="theme-btn" id="themeBtn" type="button" aria-label="Switch to dark mode" aria-pressed="false">
     <svg class="i-moon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M21 14.5A8.5 8.5 0 0 1 9.5 3a.5.5 0 0 0-.6-.6A10 10 0 1 0 21.6 15.1a.5.5 0 0 0-.6-.6z"/></svg>
     <svg class="i-sun" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.2M12 19.8V22M2 12h2.2M19.8 12H22M4.9 4.9l1.6 1.6M17.5 17.5l1.6 1.6M4.9 19.1l1.6-1.6M17.5 6.5l1.6-1.6"/></g></svg>
   </button>
   <a class="hdr-li" href="https://www.linkedin.com/company/brand-infinity/" target="_blank" rel="noopener" aria-label="Brand Infinity on LinkedIn"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg></a>
-  <a class="hdr-cta" href="#contact">Start a project</a>
+  <a class="hdr-cta" href="#contact" data-i18n="cta.start">Start a project</a>
   <button class="hdr-menu mono" id="menuBtn" aria-expanded="false" aria-controls="nav">Menu</button>
 </header>
 
@@ -58,23 +70,23 @@
     <div class="hero-shade" aria-hidden="true"></div>
 
     <div class="hero-inner">
-      <p class="mono hero-eyebrow">Brand × IP partnerships · Asia Pacific</p>
+      <p class="mono hero-eyebrow" data-i18n="hero.eyebrow">Brand × IP partnerships · Asia Pacific</p>
       <h1 class="hero-title">
-        We connect your brand to the leading storytellers across
-        <a href="#work" class="kw is-on" data-key="film">Film</a>,
-        <a href="#work" class="kw" data-key="licensing">Licensing</a>,
-        <a href="#work" class="kw" data-key="gaming">Gaming</a>
-        and <a href="#work" class="kw" data-key="streaming">Streaming</a>.
+        <span data-i18n="hero.pre">We connect your brand to the leading storytellers across</span>
+        <a href="#work" class="kw is-on" data-key="film" data-i18n="kw.film">Film</a><span data-i18n="hero.c1">,</span>
+        <a href="#work" class="kw" data-key="licensing" data-i18n="kw.licensing">Licensing</a><span data-i18n="hero.c2">,</span>
+        <a href="#work" class="kw" data-key="gaming" data-i18n="kw.gaming">Gaming</a>
+        <span data-i18n="hero.and">and</span> <a href="#work" class="kw" data-key="streaming" data-i18n="kw.streaming">Streaming</a><span data-i18n="hero.post">.</span>
       </h1>
       <div class="hero-foot">
-        <p class="mono hero-now"><span class="dot"></span>Now playing <span id="heroNow">Roborock × The Garfield Movie</span></p>
+        <p class="mono hero-now"><span class="dot"></span><span data-i18n="hero.now">Now playing</span> <span id="heroNow">Roborock × The Garfield Movie</span></p>
         <div class="hero-ctas">
-          <a class="btn btn-light" href="#contact">Start a project</a>
-          <a class="btn btn-ghost-light" href="#work">See our work</a>
+          <a class="btn btn-light" href="#contact" data-i18n="cta.start">Start a project</a>
+          <button class="btn btn-ghost-light reel-btn" type="button" id="reelBtn"><span class="play" aria-hidden="true"></span><span data-i18n="cta.reel">Watch showreel</span></button>
         </div>
       </div>
       <div class="trusted">
-        <p class="mono">Trusted by the studios</p>
+        <p class="mono" data-i18n="hero.trusted">Trusted by the studios</p>
         <ul>
           <li><img src="assets/logos/sony-pictures.png" alt="Sony Pictures"></li>
           <li><img src="assets/logos/universal.png" alt="Universal"></li>
@@ -88,7 +100,7 @@
 
   <!-- IP TICKER -->
   <section class="ticker" aria-label="Entertainment IPs we've brought brands into">
-    <p class="mono ticker-label">IPs we've brought brands into</p>
+    <p class="mono ticker-label" data-i18n="ticker">IPs we've brought brands into</p>
     <div class="ticker-track"><div class="ticker-run"><span>Garfield</span><i aria-hidden="true"><svg class="ring" aria-hidden="true"><use href="#rings"/></svg></i><span>Spider-Man</span><i aria-hidden="true"><svg class="ring" aria-hidden="true"><use href="#rings"/></svg></i><span>Transformers</span><i aria-hidden="true"><svg class="ring" aria-hidden="true"><use href="#rings"/></svg></i><span>Monopoly</span><i aria-hidden="true"><svg class="ring" aria-hidden="true"><use href="#rings"/></svg></i><span>Venom</span><i aria-hidden="true"><svg class="ring" aria-hidden="true"><use href="#rings"/></svg></i><span>Cinderella</span><i aria-hidden="true"><svg class="ring" aria-hidden="true"><use href="#rings"/></svg></i><span>Bullet Train</span><i aria-hidden="true"><svg class="ring" aria-hidden="true"><use href="#rings"/></svg></i><span>DC Super-Pets</span><i aria-hidden="true"><svg class="ring" aria-hidden="true"><use href="#rings"/></svg></i><span>Mobile Legends</span><i aria-hidden="true"><svg class="ring" aria-hidden="true"><use href="#rings"/></svg></i><span>Madame Web</span><i aria-hidden="true"><svg class="ring" aria-hidden="true"><use href="#rings"/></svg></i><span>Spider-Verse</span><i aria-hidden="true"><svg class="ring" aria-hidden="true"><use href="#rings"/></svg></i></div><div class="ticker-run" aria-hidden="true"><span>Garfield</span><i aria-hidden="true"><svg class="ring" aria-hidden="true"><use href="#rings"/></svg></i><span>Spider-Man</span><i aria-hidden="true"><svg class="ring" aria-hidden="true"><use href="#rings"/></svg></i><span>Transformers</span><i aria-hidden="true"><svg class="ring" aria-hidden="true"><use href="#rings"/></svg></i><span>Monopoly</span><i aria-hidden="true"><svg class="ring" aria-hidden="true"><use href="#rings"/></svg></i><span>Venom</span><i aria-hidden="true"><svg class="ring" aria-hidden="true"><use href="#rings"/></svg></i><span>Cinderella</span><i aria-hidden="true"><svg class="ring" aria-hidden="true"><use href="#rings"/></svg></i><span>Bullet Train</span><i aria-hidden="true"><svg class="ring" aria-hidden="true"><use href="#rings"/></svg></i><span>DC Super-Pets</span><i aria-hidden="true"><svg class="ring" aria-hidden="true"><use href="#rings"/></svg></i><span>Mobile Legends</span><i aria-hidden="true"><svg class="ring" aria-hidden="true"><use href="#rings"/></svg></i><span>Madame Web</span><i aria-hidden="true"><svg class="ring" aria-hidden="true"><use href="#rings"/></svg></i><span>Spider-Verse</span><i aria-hidden="true"><svg class="ring" aria-hidden="true"><use href="#rings"/></svg></i></div></div>
   </section>
 
@@ -96,8 +108,8 @@
   <section class="sec" id="work">
     <div class="wrap">
       <header class="sec-head">
-        <p class="mono sec-kicker">Now showing</p>
-        <h2 class="sec-title">Our Work</h2>
+        <p class="mono sec-kicker" data-i18n="work.k">Now showing</p>
+        <h2 class="sec-title" data-i18n="work.t">Our Work</h2>
         <div class="sec-aside car-nav">
           <span class="mono" id="carCount">01 / 01</span>
           <button class="circle" id="carPrev" aria-label="Previous project">←</button>
@@ -111,12 +123,12 @@
     </div>
     <div class="wrap car-foot">
       <div class="car-dots" id="carDots" role="tablist" aria-label="Choose a project"></div>
-      <p class="mono muted car-hint">Swipe or use the arrows</p>
+      <p class="mono muted car-hint" data-i18n="work.hint">Swipe or use the arrows</p>
     </div>
 
     <div class="wrap">
       <div class="sub-head" id="all">
-        <h3 class="sub-title">All projects <sup id="workCount"></sup></h3>
+        <h3 class="sub-title"><span data-i18n="work.all">All projects</span> <sup id="workCount"></sup></h3>
         <div class="tools">
           <div class="filters mono" id="filters" role="group" aria-label="Filter by discipline"></div>
           <div class="views mono" role="group" aria-label="Layout">
@@ -128,7 +140,7 @@
 
       <input type="checkbox" id="showAll" class="vh" aria-controls="grid">
       <div class="grid" id="grid"></div>
-      <label for="showAll" class="show-all" id="showAllBtn"><span class="more-t">Show all <span id="allCount">14</span> projects ↓</span><span class="less-t">Show fewer ↑</span></label>
+      <label for="showAll" class="show-all" id="showAllBtn"><span class="more-t"><span data-i18n="work.showall">Show all projects</span> (<span id="allCount">14</span>) ↓</span><span class="less-t" data-i18n="work.fewer">Show fewer ↑</span></label>
 
       <div class="index" id="index" hidden>
         <div class="index-head mono" aria-hidden="true"><span>No.</span><span>Brand</span><span>Property</span><span>Discipline</span><span>Scope</span></div>
@@ -142,9 +154,9 @@
   <section class="sec" id="products">
     <div class="wrap">
       <header class="sec-head">
-        <p class="mono sec-kicker">Merchandise &amp; tie-ins</p>
-        <h2 class="sec-title">Products &amp; Activations</h2>
-        <p class="sec-aside mono muted">Limited editions, merchandise &amp; in-game integrations</p>
+        <p class="mono sec-kicker" data-i18n="prod.k">Merchandise &amp; tie-ins</p>
+        <h2 class="sec-title" data-i18n="prod.t">Products &amp; Activations</h2>
+        <p class="sec-aside mono muted" data-i18n="prod.a">Limited editions, merchandise &amp; in-game integrations</p>
       </header>
       <ul class="tiles" id="prod"></ul>
     </div>
@@ -154,10 +166,21 @@
   <section class="sec" id="partners">
     <div class="wrap">
       <header class="sec-head">
-        <p class="mono sec-kicker">Partners</p>
-        <h2 class="sec-title">Brands we’ve worked with</h2>
+        <p class="mono sec-kicker" data-i18n="partners.k">Partners</p>
+        <h2 class="sec-title" data-i18n="partners.t">Brands we’ve worked with</h2>
       </header>
       <div class="partners" id="partnerGroups"></div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS: hidden until quotes are added in projects.js -->
+  <section class="sec quotes" id="quotes" hidden>
+    <div class="wrap">
+      <header class="sec-head">
+        <p class="mono sec-kicker" data-i18n="quotes.k">In their words</p>
+        <h2 class="sec-title" data-i18n="quotes.t">What partners say</h2>
+      </header>
+      <div class="quote-list" id="quoteList"></div>
     </div>
   </section>
 
@@ -165,15 +188,23 @@
   <section class="cta-band grain">
     <svg class="cta-rings" aria-hidden="true"><use href="#rings"/></svg>
     <div class="wrap cta-band-grid">
-      <p class="mono sec-kicker">Elevate your brand</p>
-      <h2 class="cta-band-title">Got a launch coming up?<br><span>Let's put it in the story.</span></h2>
+      <p class="mono sec-kicker" data-i18n="band.k">Elevate your brand</p>
+      <h2 class="cta-band-title"><span class="t1" data-i18n="band.t1">Got a launch coming up?</span><br><span data-i18n="band.t2">Let's put it in the story.</span></h2>
       <div class="cta-band-side">
-        <p>Tell us about your brand and timing. We'll come back with the IPs, partnership model and activation ideas that fit.</p>
+        <p data-i18n="band.p">Tell us about your brand and timing. We'll come back with the IPs, partnership model and activation ideas that fit.</p>
         <div class="cta-band-btns">
-          <a class="btn btn-light" href="#contact">Start a project</a>
-          <a class="btn btn-ghost-light" href="https://www.linkedin.com/company/brand-infinity/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg> Follow on LinkedIn</a>
+          <a class="btn btn-light" href="#contact" data-i18n="cta.start">Start a project</a>
+          <a class="btn btn-ghost-light" href="https://www.linkedin.com/company/brand-infinity/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg> <span data-i18n="cta.follow">Follow on LinkedIn</span></a>
         </div>
       </div>
+    </div>
+    <div class="wrap slate">
+      <div class="slate-head">
+        <p class="mono" data-i18n="slate.k">On the slate</p>
+        <p class="slate-note" data-i18n="slate.p">Upcoming releases still open to brand partners. The full list is shared under NDA.</p>
+        <a class="mono slate-link" href="#contact" data-i18n="slate.cta">Ask for the slate →</a>
+      </div>
+      <ul class="slate-list" id="slate"></ul>
     </div>
   </section>
 
@@ -181,9 +212,9 @@
   <section class="sec dark grain" id="services">
     <div class="wrap">
       <header class="sec-head">
-        <p class="mono sec-kicker">Behind the scenes</p>
-        <h2 class="sec-title">Services</h2>
-        <p class="sec-aside mono muted">From first idea to launch day</p>
+        <p class="mono sec-kicker" data-i18n="svc.k">Behind the scenes</p>
+        <h2 class="sec-title" data-i18n="svc.t">Services</h2>
+        <p class="sec-aside mono muted" data-i18n="svc.a">From first idea to launch day</p>
       </header>
       <div class="svc-wrap">
       <figure class="svc-media" aria-hidden="true">
@@ -195,21 +226,21 @@
       </figure>
       <ol class="svc" id="svc">
         <li data-cap="realme × Spider-Man: Far From Home">
-          <button class="svc-row" aria-expanded="true"><span class="t">Access to global IP</span><span class="pm" aria-hidden="true"></span></button>
+          <button class="svc-row" aria-expanded="true"><span class="t" data-i18n="svc.0">Access to global IP</span><span class="pm" aria-hidden="true"></span></button>
           <div class="svc-body">
             <p>We connect you to key stakeholders in global entertainment IPs across film, gaming and streaming, with direct access through trusted relationships and regional expertise. We are your gateway agency for Asia Pacific, at a local, regional and global level: the first step in your IP partnership journey.</p>
             <ul class="mono scope"><li>Alliances with IP rights holders</li><li>Premiere sponsorship &amp; events</li><li>Collaboration &amp; partnership planning</li></ul>
           </div>
         </li>
         <li data-cap="Onitsuka Tiger × Cinderella">
-          <button class="svc-row" aria-expanded="false"><span class="t">Brand consultation</span><span class="pm" aria-hidden="true"></span></button>
+          <button class="svc-row" aria-expanded="false"><span class="t" data-i18n="svc.1">Brand consultation</span><span class="pm" aria-hidden="true"></span></button>
           <div class="svc-body" hidden>
             <p>We evaluate your brand and objectives to shape the right entertainment strategy and advise on the best genre fits. We map partnership models and deal terms to the timings that fit your calendar goals and budget.</p>
             <ul class="mono scope"><li>Strategic planning in entertainment</li><li>Genre &amp; IP fit</li><li>Calendar &amp; budget planning</li></ul>
           </div>
         </li>
         <li data-cap="Heinemann × Monopoly">
-          <button class="svc-row" aria-expanded="false"><span class="t">Licensing &amp; negotiation</span><span class="pm" aria-hidden="true"></span></button>
+          <button class="svc-row" aria-expanded="false"><span class="t" data-i18n="svc.2">Licensing &amp; negotiation</span><span class="pm" aria-hidden="true"></span></button>
           <div class="svc-body" hidden>
             <p>We negotiate across all product categories, so the deal structure fits your business and marketing needs.</p>
             <dl class="models">
@@ -221,13 +252,23 @@
           </div>
         </li>
         <li data-cap="Tic Tac × Mobile Legends: Bang Bang">
-          <button class="svc-row" aria-expanded="false"><span class="t">Campaigns &amp; activation</span><span class="pm" aria-hidden="true"></span></button>
+          <button class="svc-row" aria-expanded="false"><span class="t" data-i18n="svc.3">Campaigns &amp; activation</span><span class="pm" aria-hidden="true"></span></button>
           <div class="svc-body" hidden>
             <p>We develop a framework across every brand and consumer touchpoint and support end-to-end campaign delivery.</p>
             <ul class="mono scope"><li>Promotional programs</li><li>Sales mechanic activations</li><li>Social &amp; digital</li><li>PR &amp; launch events</li><li>E-commerce &amp; in-trade</li><li>Product integration</li><li>Premiums &amp; merchandise</li><li>In-film &amp; in-game integration</li></ul>
           </div>
         </li>
       </ol>
+      </div>
+
+      <div class="steps-wrap">
+        <p class="mono sec-kicker" data-i18n="steps.k">How it works</p>
+        <ol class="steps">
+          <li><span class="mono">01</span><h3 data-i18n="steps.1t">Brief</h3><p data-i18n="steps.1p">Tell us your brand, market, budget and launch window.</p></li>
+          <li><span class="mono">02</span><h3 data-i18n="steps.2t">IP matching</h3><p data-i18n="steps.2p">We shortlist the films, games and series that fit your audience and calendar.</p></li>
+          <li><span class="mono">03</span><h3 data-i18n="steps.3t">Rights &amp; approvals</h3><p data-i18n="steps.3p">We negotiate the deal and manage studio approvals for every asset.</p></li>
+          <li><span class="mono">04</span><h3 data-i18n="steps.4t">Launch</h3><p data-i18n="steps.4p">Campaign, product and retail roll-out, delivered end to end.</p></li>
+        </ol>
       </div>
     </div>
   </section>
@@ -237,18 +278,18 @@
     <div class="scene-bg" aria-hidden="true"><img src="assets/work/5hour-spiderverse.webp" alt=""></div>
     <div class="scene-shade" aria-hidden="true"></div>
     <div class="wrap scene-inner">
-      <p class="mono sec-kicker">Why work with us</p>
-      <h2 class="scene-title">We specialise in <span>pop culture.</span></h2>
+      <p class="mono sec-kicker" data-i18n="why.k">Why work with us</p>
+      <h2 class="scene-title"><span class="t1" data-i18n="why.t1">We specialise in</span> <span data-i18n="why.t2">pop culture.</span></h2>
       <div class="scene-cols">
         <p>With deep experience across entertainment, brand marketing and agency leadership, our team forges partnerships across film, gaming, streaming and licensing.</p>
         <p>Over the past 15 years, we've built regional and global collaborations that connect the world's leading IPs with brands across Asia Pacific, delivering measurable value and ROI for all parties.</p>
         <p>Culturally diverse and based across Southeast Asia, our team bridges global storytelling with local insight, so every partnership resonates with real audiences and drives talkability.</p>
       </div>
       <dl class="credits">
-        <div><dt class="mono">Experience</dt><dd>15+ years</dd></div>
-        <div><dt class="mono">Brand partners</dt><dd>40+</dd></div>
-        <div><dt class="mono">Genres</dt><dd>Film · Gaming · Streaming</dd></div>
-        <div><dt class="mono">Region</dt><dd>Asia Pacific</dd></div>
+        <div><dt class="mono" data-i18n="why.exp">Experience</dt><dd data-i18n="why.expv">15+ years</dd></div>
+        <div><dt class="mono" data-i18n="why.partners">Brand partners</dt><dd>40+</dd></div>
+        <div><dt class="mono" data-i18n="why.genres">Genres</dt><dd data-i18n="why.genresv">Film · Gaming · Streaming</dd></div>
+        <div><dt class="mono" data-i18n="why.region">Region</dt><dd data-i18n="why.regionv">Asia Pacific</dd></div>
       </dl>
     </div>
   </section>
@@ -258,35 +299,41 @@
     <div class="poster-bg" aria-hidden="true"><img src="assets/work/realme-spiderman.webp" alt=""></div>
     <div class="wrap">
       <header class="sec-head">
-        <p class="mono sec-kicker">Looking to get your brand noticed?</p>
-        <h2 class="sec-title poster-title">Your brand.<br><span>Coming soon</span> to a screen near you.</h2>
+        <p class="mono sec-kicker" data-i18n="contact.k">Looking to get your brand noticed?</p>
+        <h2 class="sec-title poster-title"><span class="t1" data-i18n="contact.t1">Your brand.</span><br><span data-i18n="contact.t2">Coming soon</span> <span class="t1" data-i18n="contact.t3">to a screen near you.</span></h2>
       </header>
       <div class="contact-cols">
         <div class="contact-info">
-          <p class="contact-lead">Connect with the team to discuss how we can integrate your brand story within entertainment.</p>
+          <p class="contact-lead" data-i18n="contact.lead">Connect with the team to discuss how we can integrate your brand story within entertainment.</p>
           <a class="big-mail" href="mailto:connect@brandinfinity.sg">connect@brandinfinity.sg</a>
           <div class="contact-meta">
-            <p class="mono"><span class="k">Address</span>Brand Infinity Pte Ltd<br>68 Circular Road #02-01<br>049422, Singapore</p>
-            <p class="mono"><span class="k">Follow</span><a class="li-link" href="https://www.linkedin.com/company/brand-infinity/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg> LinkedIn</a></p>
+            <p class="mono"><span class="k" data-i18n="f.address">Address</span>Brand Infinity Pte Ltd<br>68 Circular Road #02-01<br>049422, Singapore</p>
+            <p class="mono"><span class="k" data-i18n="f.follow">Follow</span><a class="li-link" href="https://www.linkedin.com/company/brand-infinity/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg> LinkedIn</a></p>
+            <p class="mono"><span class="k" data-i18n="f.deck">Credentials</span><a class="deck-link" href="assets/brand-infinity-credentials.pdf" download><span data-i18n="cta.deck">Download our credentials (PDF)</span> ↓</a></p>
           </div>
         </div>
         <form class="form" id="form" novalidate>
-          <label><span class="mono">Name</span><input name="name" required autocomplete="name"></label>
-          <label><span class="mono">Company</span><input name="company" autocomplete="organization"></label>
-          <label><span class="mono">Email</span><input name="email" type="email" required autocomplete="email"></label>
+          <label><span class="mono" data-i18n="form.name">Name</span><input name="name" required autocomplete="name"></label>
+          <label><span class="mono" data-i18n="form.company">Company</span><input name="company" autocomplete="organization"></label>
+          <label><span class="mono" data-i18n="form.email">Email</span><input name="email" type="email" required autocomplete="email"></label>
+          <div class="form-row">
+            <label><span class="mono" data-i18n="form.budget">Budget</span><select name="budget"><option value="" data-i18n="form.select">Select</option><option>Under S$50k</option><option>S$50k – 150k</option><option>S$150k – 500k</option><option>S$500k+</option><option value="Not sure yet" data-i18n="form.unsure">Not sure yet</option></select></label>
+            <label><span class="mono" data-i18n="form.timing">Launch</span><select name="timing"><option value="" data-i18n="form.select">Select</option><option value="Within 3 months" data-i18n="form.t1">Within 3 months</option><option value="3–6 months" data-i18n="form.t2">3–6 months</option><option value="6–12 months" data-i18n="form.t3">6–12 months</option><option value="12+ months" data-i18n="form.t4">12+ months</option></select></label>
+          </div>
+          <label><span class="mono" data-i18n="form.ip">IP in mind</span><input name="ip" autocomplete="off" data-i18n-ph="form.ipph" placeholder="e.g. a film, game or character (optional)"></label>
           <fieldset>
-            <legend class="mono">Interested in</legend>
+            <legend class="mono" data-i18n="form.interest">Interested in</legend>
             <div class="checks">
-              <label><input type="checkbox" name="interest" value="Film"><span>Film</span></label>
-              <label><input type="checkbox" name="interest" value="Gaming"><span>Gaming</span></label>
-              <label><input type="checkbox" name="interest" value="Streaming"><span>Streaming</span></label>
-              <label><input type="checkbox" name="interest" value="Licensing"><span>Licensing</span></label>
+              <label><input type="checkbox" name="interest" value="Film"><span data-i18n="kw.film">Film</span></label>
+              <label><input type="checkbox" name="interest" value="Gaming"><span data-i18n="kw.gaming">Gaming</span></label>
+              <label><input type="checkbox" name="interest" value="Streaming"><span data-i18n="kw.streaming">Streaming</span></label>
+              <label><input type="checkbox" name="interest" value="Licensing"><span data-i18n="kw.licensing">Licensing</span></label>
             </div>
           </fieldset>
-          <label><span class="mono">Brief</span><textarea name="message" rows="3" required></textarea></label>
+          <label><span class="mono" data-i18n="form.brief">Brief</span><textarea name="message" rows="3" required></textarea></label>
           <div class="form-foot">
-            <button type="submit" class="btn">Send enquiry →</button>
-            <p class="mono muted" id="formNote">Opens your email app with the message ready.</p>
+            <button type="submit" class="btn" data-i18n="form.send">Send enquiry →</button>
+            <p class="mono muted" id="formNote" aria-live="polite"></p>
           </div>
         </form>
       </div>
@@ -309,12 +356,12 @@
       <div>
         <p class="mono k">Contact</p>
         <p><a href="mailto:connect@brandinfinity.sg">connect@brandinfinity.sg</a></p>
-        <p class="mono k">Follow</p>
+        <p class="mono k" data-i18n="f.follow">Follow</p>
         <p><a class="li-link" href="https://www.linkedin.com/company/brand-infinity/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg> LinkedIn</a></p>
       </div>
       <nav aria-label="Footer">
         <p class="mono k">Explore</p>
-        <ul><li><a href="#work">Our Work</a></li><li><a href="#products">Products</a></li><li><a href="#partners">Partners</a></li><li><a href="#services">Services</a></li><li><a href="#contact">Contact</a></li></ul>
+        <ul><li><a href="#work" data-i18n="work.t">Our Work</a></li><li><a href="#products" data-i18n="nav.products">Products</a></li><li><a href="#partners" data-i18n="nav.partners">Partners</a></li><li><a href="#services" data-i18n="nav.services">Services</a></li><li><a href="#contact" data-i18n="nav.contact">Contact</a></li><li><a href="assets/brand-infinity-credentials.pdf" download data-i18n="f.deckshort">Credentials (PDF)</a></li></ul>
       </nav>
     </div>
     <p class="mono ftr-prod">A</p>
@@ -322,7 +369,7 @@
     <p class="mono ftr-prod ftr-prod-end">Production</p>
     <div class="ftr-row mono">
       <span>© <span id="year">2025</span> Brand Infinity Pte Ltd. All rights reserved.</span>
-      <a href="#top">Back to top ↑</a>
+      <a href="#top" data-i18n="f.top">Back to top ↑</a>
     </div>
   </div>
 </footer>
@@ -337,7 +384,19 @@
   <div class="case-inner" id="caseInner"></div>
 </div>
 
+<!-- Showreel -->
+<div class="reel" id="reel" role="dialog" aria-modal="true" aria-label="Showreel" hidden>
+  <div class="reel-bar mono">
+    <span id="reelCap"></span>
+    <span class="reel-count" id="reelCount"></span>
+    <button id="reelClose" data-i18n="reel.close">Close ✕</button>
+  </div>
+  <video id="reelVideo" playsinline controls></video>
+  <div class="reel-dots" id="reelDots"></div>
+</div>
+
 <script src="projects.js"></script>
+<script src="i18n.js"></script>
 <script src="main.js"></script>
 </body>
 </html>

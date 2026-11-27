@@ -9,6 +9,9 @@
   const title = (p) => `${esc(p.brand)}<i>×</i>${esc(p.ip)}`;
   const fine = matchMedia("(hover: hover) and (pointer: fine)").matches;
   const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const I18N = window.I18N || { t: (k, en) => (en != null ? en : k), apply() {}, set() {}, lang: "en" };
+  const T = (en) => I18N.t(en, en);
+  const SITE = window.SITE || {};
 
   /* ---------- Media frames: fill the frame when the image is close to its shape ---------- */
   const fitFrame = (img) => {
@@ -102,7 +105,7 @@
       ${frame(p.cover || p.images[0], "", 'loading="lazy"')}
       <span class="tile-cap"><span class="mono n">${pad(i)}</span><h3>${title(p)}</h3><span class="mono d">${esc(CAT[p.category] || p.category)}</span></span>
     </a>`).join("") + `
-    <a class="tile-cta" href="#contact"><span class="mono">Next project</span><strong>Your brand <i>×</i> the next big IP</strong><span class="mono">Start a project →</span></a>`;
+    <a class="tile-cta" href="#contact"><span class="mono" data-i18n="Next project">Next project</span><strong><span data-i18n="Your brand">Your brand</span> <i>×</i> <span data-i18n="the next big IP">the next big IP</span></strong><span class="mono" data-i18n="Start a project →">Start a project →</span></a>`;
 
   const listEl = $("#indexList");
   listEl.innerHTML = P.map((p, i) => `
@@ -122,7 +125,7 @@
   const cats = ["all", ...new Set(P.map((p) => p.category))];
   $("#filters").innerHTML = cats.map((c) => {
     const n = c === "all" ? P.length : P.filter((p) => p.category === c).length;
-    return `<button data-f="${c}" aria-pressed="false">${c === "all" ? "All" : CAT[c] || c}<sup>${n}</sup></button>`;
+    return `<button data-f="${c}" aria-pressed="false"><span data-i18n="${c === "all" ? "All" : "kw." + c}">${c === "all" ? "All" : CAT[c] || c}</span><sup>${n}</sup></button>`;
   }).join("");
   // Collapsed by default: first 5 projects + the CTA tile; "Show all" reveals the rest (works without JS too)
   $$(".tile[data-cat]", grid).forEach((t, k) => t.classList.toggle("more", k >= 5));
@@ -185,13 +188,26 @@
   addEventListener("load", sizeAll); sizeAll();
   $("#partnerGroups").innerHTML = G.map((g) => `
     <div class="pgroup">
-      <h3>${esc(g.name)}</h3>
+      <h3 data-i18n="${esc(g.name)}">${esc(g.name)}</h3>
       <ul class="plogos">${g.logos.map((n) => {
         const img = `<img src="assets/logos/${n}.png" alt="${esc(n.replace(/-/g, " "))}">`;
         const url = LINKS[n];
         return `<li>${url ? `<a href="${esc(url)}" target="_blank" rel="noopener" aria-label="${esc(n.replace(/-/g, " "))} website (opens in a new tab)">${img}</a>` : img}</li>`;
       }).join("")}</ul>
     </div>`).join("");
+
+  /* ---------- On the slate (launch band) ---------- */
+  $("#slate").innerHTML = (window.SLATE || []).map((d) => `
+    <li><span class="mono when" data-i18n="${esc(d.when)}">${esc(d.when)}</span><strong data-i18n="${esc(d.kind)}">${esc(d.kind)}</strong><span class="note" data-i18n="${esc(d.note)}">${esc(d.note)}</span></li>`).join("");
+
+  /* ---------- Testimonials (hidden until quotes are added) ---------- */
+  const Q = window.TESTIMONIALS || [];
+  if (Q.length) {
+    $("#quoteList").innerHTML = Q.map((q) => `
+      <figure class="quote"><blockquote>“${esc(q.quote)}”</blockquote>
+        <figcaption><strong>${esc(q.name)}</strong><span class="mono">${esc([q.role, q.company].filter(Boolean).join(", "))}</span></figcaption></figure>`).join("");
+    $("#quotes").hidden = false;
+  }
 
   /* ---------- 04 Services accordion ---------- */
   // Each service shows a matching campaign still beside the list (like flipping through posters)
@@ -220,19 +236,24 @@
     const rows = []; for (let k = 0; k < rest.length; k += 2) rows.push(rest.length - k === 1 ? rest[k] : `<div class="pair">${rest[k]}${rest[k + 1]}</div>`);
     const nx = P[(i + 1) % P.length];
     $("#caseNo").textContent = `${pad(i)} / ${pad(P.length - 1)}`;
+    const res = (p.results || []).filter((r) => r && r.value);
+    const results = res.length
+      ? `<dl class="case-results">${res.map((r) => `<div><dd>${esc(r.value)}</dd><dt class="mono">${esc(r.label || "")}</dt></div>`).join("")}</dl>`
+      : `<div class="case-results empty"><p>${esc(T("Campaign results available on request."))}</p><a class="mono" href="#contact" data-close>${esc(T("Ask us →"))}</a></div>`;
     inner.innerHTML = `
       <h2 class="case-title" id="caseTitle">${esc(p.brand)} <i>×</i><br>${esc(p.ip)}</h2>
       <div class="case-meta mono">
-        <p><span class="k">Brand</span>${esc(p.brand)}</p>
-        <p><span class="k">Property</span>${esc(p.ip)}</p>
-        <p><span class="k">Discipline</span>${esc(CAT[p.category] || p.category)}</p>
-        <p><span class="k">Scope</span>${(p.tags || []).map(esc).join("<br>")}</p>
+        <p><span class="k">${esc(T("Brand"))}</span>${esc(p.brand)}</p>
+        <p><span class="k">${esc(T("Property"))}</span>${esc(p.ip)}</p>
+        <p><span class="k">${esc(T("Discipline"))}</span>${esc(I18N.t("kw." + p.category, CAT[p.category] || p.category))}</p>
+        <p><span class="k">${esc(T("Scope"))}</span>${(p.tags || []).map(esc).join("<br>")}</p>
         <p class="sum">${esc(p.summary)}</p>
       </div>
+      <div class="case-res-wrap"><p class="mono k">${esc(T("Results"))}</p>${results}</div>
       <div class="case-media">${first}${rows.join("")}</div>
       <div class="case-cta">
-        <a href="#contact" data-close><span class="mono muted">Have a brief?</span><strong>Start a project like this</strong></a>
-        <button data-next><span class="mono muted">Next project</span><strong>${esc(nx.brand)} × ${esc(nx.ip)}</strong></button>
+        <a href="#contact" data-close><span class="mono muted">${esc(T("Have a brief?"))}</span><strong>${esc(T("Start a project like this"))}</strong></a>
+        <button data-next><span class="mono muted">${esc(T("Next project"))}</span><strong>${esc(nx.brand)} × ${esc(nx.ip)}</strong></button>
       </div>`;
     box.scrollTop = 0;
   };
@@ -266,22 +287,85 @@
     if (e.key === "ArrowLeft") go(-1);
   });
 
-  /* ---------- Contact form → pre-filled email ---------- */
-  const form = $("#form");
-  form.addEventListener("submit", (e) => {
+  /* ---------- Contact form: sends to the inbox (Formspree) when set up, otherwise opens an email ---------- */
+  const form = $("#form"), note = $("#formNote");
+  let noteKey = SITE.formEndpoint ? "" : "Opens your email app with the message ready.";
+  const setNote = (k) => { noteKey = k; note.textContent = k ? T(k) : ""; };
+  setNote(noteKey);
+  form.addEventListener("submit", async (e) => {
     e.preventDefault();
     let ok = true;
     $$("[required]", form).forEach((f) => {
       const bad = !f.value.trim() || (f.type === "email" && !/^\S+@\S+\.\S+$/.test(f.value));
       f.closest("label").classList.toggle("invalid", bad); if (bad) ok = false;
     });
-    if (!ok) { $("#formNote").textContent = "Please add your name, a valid email and a short brief."; return; }
+    if (!ok) return setNote("Please add your name, a valid email and a short brief.");
     const d = new FormData(form);
-    const subject = `Partnership enquiry — ${d.get("company") || d.get("name")}`;
-    const body = `Name: ${d.get("name")}\nCompany: ${d.get("company")}\nEmail: ${d.get("email")}\nInterested in: ${d.getAll("interest").join(", ") || "Not specified"}\n\n${d.get("message")}`;
-    location.href = `mailto:connect@brandinfinity.sg?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    $("#formNote").textContent = "Your email app should open now. If not, write to connect@brandinfinity.sg.";
+    const lines = [
+      ["Name", d.get("name")], ["Company", d.get("company")], ["Email", d.get("email")],
+      ["Budget", d.get("budget")], ["Launch", d.get("timing")], ["IP in mind", d.get("ip")],
+      ["Interested in", d.getAll("interest").join(", ")]
+    ].map(([k, v]) => `${k}: ${v || "Not specified"}`).join("\n");
+    const subject = `Partnership enquiry: ${d.get("company") || d.get("name")}`;
+    if (SITE.formEndpoint) {
+      const btn = $("button[type=submit]", form); btn.disabled = true; setNote("Sending…");
+      try {
+        const r = await fetch(SITE.formEndpoint, { method: "POST", headers: { Accept: "application/json", "Content-Type": "application/json" },
+          body: JSON.stringify({ _subject: subject, name: d.get("name"), email: d.get("email"), company: d.get("company"), budget: d.get("budget"), launch: d.get("timing"), ip: d.get("ip"), interest: d.getAll("interest").join(", "), message: d.get("message") }) });
+        if (!r.ok) throw new Error(r.status);
+        form.reset(); setNote("Thanks! The team will be in touch soon.");
+        if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: "enquiry-sent", title: "Enquiry sent", event: true });
+      } catch (err) { setNote("Something went wrong. Please email connect@brandinfinity.sg."); }
+      btn.disabled = false;
+      return;
+    }
+    location.href = `mailto:connect@brandinfinity.sg?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines + "\n\n" + d.get("message"))}`;
+    setNote("Your email app should open now. If not, write to connect@brandinfinity.sg.");
   });
+
+  /* ---------- Showreel: plays the campaign films back to back ---------- */
+  const REEL = P.filter((p) => p.video).map((p) => ({ src: p.video, cap: `${p.brand} × ${p.ip}` }));
+  const hv = $$("video.hero-media").map((v) => ({ src: v.getAttribute("src"), cap: NOW[v.dataset.key] || "" }));
+  hv.forEach((h) => { if (!REEL.some((r) => r.src === h.src)) REEL.push(h); });
+  const reel = $("#reel"), rv = $("#reelVideo");
+  let ri = 0, reelFocus = null;
+  const reelPlay = (k) => {
+    ri = (k + REEL.length) % REEL.length;
+    rv.src = REEL[ri].src; rv.play().catch(() => {});
+    $("#reelCap").textContent = REEL[ri].cap;
+    $("#reelCount").textContent = `${pad(ri)} / ${pad(REEL.length - 1)}`;
+    $$("#reelDots button").forEach((b, j) => b.setAttribute("aria-current", j === ri));
+  };
+  $("#reelDots").innerHTML = REEL.map((r, k) => `<button aria-label="${esc(r.cap)}" data-k="${k}"></button>`).join("");
+  $("#reelDots").addEventListener("click", (e) => { const b = e.target.closest("button"); if (b) reelPlay(+b.dataset.k); });
+  rv.addEventListener("ended", () => reelPlay(ri + 1));
+  const reelOpen = () => {
+    if (!REEL.length) return;
+    reelFocus = document.activeElement; reel.hidden = false; document.body.classList.add("lock");
+    media.forEach((m) => m.tagName === "VIDEO" && m.pause()); clearTimeout(heroTimer);
+    rv.muted = false; reelPlay(0); $("#reelClose").focus();
+    if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: "showreel", title: "Showreel opened", event: true });
+  };
+  const reelClose = () => { rv.pause(); rv.removeAttribute("src"); rv.load(); reel.hidden = true; document.body.classList.remove("lock"); show(keys[hk]); if (reelFocus) reelFocus.focus({ preventScroll: true }); };
+  $("#reelBtn").addEventListener("click", reelOpen);
+  $("#reelClose").addEventListener("click", reelClose);
+  reel.addEventListener("click", (e) => { if (e.target === reel) reelClose(); });
+  addEventListener("keydown", (e) => {
+    if (reel.hidden) return;
+    if (e.key === "Escape") reelClose();
+    if (e.key === "ArrowRight") reelPlay(ri + 1);
+    if (e.key === "ArrowLeft") reelPlay(ri - 1);
+  });
+
+  /* ---------- Visit stats (GoatCounter), only when a code is set in projects.js ---------- */
+  if (SITE.goatcounter && /^[a-z0-9-]+$/i.test(SITE.goatcounter)) {
+    const gc = document.createElement("script");
+    gc.async = true; gc.src = "https://gc.zgo.at/count.js";
+    gc.dataset.goatcounter = `https://${SITE.goatcounter}.goatcounter.com/count`;
+    document.body.appendChild(gc);
+    // Count case-study views as their own pages
+    addEventListener("hashchange", () => { if (location.hash.startsWith("#project/") && window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: location.hash.slice(1), title: document.title }); });
+  }
 
   /* ---------- Light / dark toggle (light is the default; choice remembered) ---------- */
   const root = document.documentElement, themeBtn = $("#themeBtn"), metaTheme = $('meta[name="theme-color"]');
@@ -297,6 +381,18 @@
     applyTheme(next);
     try { localStorage.setItem("bi-theme", next); } catch (e) {}
   });
+
+  /* ---------- Language ---------- */
+  const langSel = $("#langSel");
+  langSel.value = I18N.lang;
+  langSel.addEventListener("change", () => I18N.set(langSel.value));
+  document.addEventListener("langchange", () => {
+    langSel.value = I18N.lang;
+    setNote(noteKey);
+    if (cur > -1) render(cur);
+    requestAnimationFrame(sizeAll);
+  });
+  I18N.set(I18N.lang);
 
   $("#year").textContent = new Date().getFullYear();
   fitAll(); addEventListener("load", fitAll);
