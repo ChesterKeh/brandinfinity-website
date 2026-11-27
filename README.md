@@ -78,3 +78,7 @@ The deck layout is `tools/credentials.html`; the preview image is `tools/og.html
 ## Services panels
 
 The four services are expanding panels in `index.html` (search for `class="svx"`). Each panel has an image, a one-line hook, tags and a "See it in action" link to a case study (`#project/<slug>`). They rotate every 6.5 seconds while on screen, pause on hover, and stack as tappable cards on phones. To change a panel's picture, swap the `src` of its `svx-img`.
+
+## After editing CSS or JS
+
+Browsers keep `styles.css` and the `.js` files for up to 10 minutes. When you change them, bump the `?v=` number on their links at the bottom and top of `index.html` (e.g. `styles.css?v=14` → `?v=15`) so visitors get the new files together with the new page.
