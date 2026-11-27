@@ -942,22 +942,26 @@ html[data-lang="th"] .mono { font-size: 13px; }
    Flow: hero (dark) → work → products → WHY US banner → partners → services
          → LAUNCH band → contact → footer (dark)
    ========================================================================== */
-.hero-title { max-width: 19ch; font-size: clamp(44px, 6.6vw, 112px); }
-.hero-kws { display: flex; flex-wrap: wrap; align-items: center; gap: .1em .38em; margin: clamp(14px, 2vw, 24px) 0 0; font-weight: 800; text-transform: uppercase; font-family: var(--display); font-variation-settings: "wdth" 72; font-size: clamp(28px, 3.6vw, 60px); line-height: 1; }
-.hero-kws .kw { color: rgba(255,255,255,.55); }
-.hero-kws .kw.is-on, .hero-kws .kw:hover, .hero-kws .kw:focus-visible { color: #ff3b2f; }
-.hero-kws .ring { width: .5em; height: .5em; color: var(--orange); opacity: .9; flex: none; }
-html[data-lang="th"] .hero-kws, html[data-lang="zh"] .hero-kws { line-height: 1.2; }
 
 /* Why us banner now sits between Products and Partners */
 #products + .scene { margin-top: var(--sec); }
 .scene + #partners { padding-top: var(--sec); }
 #partners { background: none !important; padding-bottom: 0 !important; }
 
-/* Services flows into the launch band, which flows into Contact */
+/* Services flows straight into the launch band, which flows into Contact */
 #services + .cta-band { margin-top: 0; }
 .cta-band + .sec.dark { margin-top: 0; border-top: 0; }
-html:not([data-theme="dark"]) #services { background: linear-gradient(to bottom, var(--paper) 0%, var(--paper) 75%, #f9e3d5 100%); }
-/* A brand-gradient edge on the dark banners (echoes the ticker under the hero) */
-html .scene { border-style: solid; border-width: 0 0 4px; border-image: var(--grad) 1; }
-html .cta-band { border-style: solid !important; border-width: 4px 0 0 !important; border-image: var(--grad) 1 !important; }
+html:not([data-theme="dark"]) #services { background: none; }
+
+/* Round 11: every dark banner gets the same frame
+   - same inner padding top and bottom
+   - brand-gradient line on both edges (like the ticker under the hero)
+   - same gap to the light sections around it (one --sec) */
+.scene, .cta-band { --bpad: clamp(64px, 8vw, 112px); padding: var(--bpad) 0 !important; border-style: solid !important; border-width: 4px 0 !important; border-image: var(--grad) 1 !important; }
+.scene::before { display: none; }          /* drop the uneven letterbox bars */
+.scene-bg img { transform: scale(1.06); }
+#products + .scene { margin-top: var(--sec); }
+.scene + #partners { padding-top: var(--sec); }
+#services { padding-bottom: var(--sec) !important; }
+.cta-band + #contact { padding-top: var(--sec); }
+@media (max-width: 760px) { .scene, .cta-band { --bpad: 56px; } }
