@@ -18,7 +18,7 @@ zpath = out + ".zip"
 if os.path.isdir(out):
     shutil.rmtree(out)
 os.makedirs(out)
-for f in ["index.html", "styles.css", "main.js", "projects.js", "i18n.js"]:
+for f in ["index.html", "styles.css", "cinema.css", "main.js", "projects.js", "i18n.js"]:
     shutil.copy2(os.path.join(root, f), out)
 shutil.copytree(os.path.join(root, "assets"), os.path.join(out, "assets"))
 

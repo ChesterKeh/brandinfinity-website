@@ -87,3 +87,7 @@ Browsers keep `styles.css` and the `.js` files for up to 10 minutes. When you ch
 
 - **Upload package for any host:** `python3 tools/make-deploy.py https://www.brandinfinity.sg/` writes `../brandinfinity-site-deploy.zip` (site files only, link previews pointed at the final address, cache headers). Drag the unzipped folder into https://app.netlify.com/drop or Cloudflare Pages.
 - **Wix:** `wix/wix-custom-code.html` shows the site full-screen on the existing Wix site. Step-by-step instructions are in `wix/WIX-SETUP.md`. Switch the snippet off to go back to the old Wix site.
+
+## Cinema look (preview)
+
+Add `?look=cinema` to the address (e.g. `https://chesterkeh.github.io/brandinfinity-website/?look=cinema`) to see the cinema / ticketing style: marquee bulbs, letter-board titles, admit-one ticket cards, a giant ticket for the launch band and a booking-ticket contact form. It lives in `cinema.css` and only applies with that link, so the normal address is unchanged. To make it the default, change the inline script in `index.html` so it always sets `data-look="cinema"`.
